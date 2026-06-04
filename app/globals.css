@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --gold: #C9A84C;
+  --gold-light: #E8D08A;
+  --gold-dim: #8A6A2A;
+  --deep: #0A0704;
+  --warm-dark: #110D07;
+  --warm-mid: #1E1509;
+  --cream: #F5EDD8;
+  --cream-dim: #B8A880;
+  --text: #E8DCC8;
+  --text-dim: #8A7A60;
+}
+
+.font-cinzel { font-family: var(--font-cinzel); }
+.font-cormorant { font-family: var(--font-cormorant); }
+.font-dm { font-family: var(--font-dm-sans); }

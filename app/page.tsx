@@ -1,3 +1,5 @@
-export default function Home() {
-  return <main><h1>Kirtan Rasa</h1></main>;
+import HeroSection from '@/components/HeroSection';
+
+export default function HomePage() {
+  return <HeroSection />;
 }
