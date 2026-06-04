@@ -4,51 +4,48 @@ import { SOCIAL_LINKS } from '@/lib/data';
 export default function Footer() {
   return (
     <footer
-      className="px-12 py-10"
-      style={{ borderTop: '1px solid rgba(201,168,76,0.1)', backgroundColor: '#0A0704' }}
+      className="px-12 py-12"
+      style={{
+        backgroundColor: 'var(--forest)',
+        borderTop: '3px solid var(--teal-deep)',
+      }}
     >
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         <div>
-          <div className="font-cinzel text-lg font-semibold" style={{ color: '#C9A84C' }}>
+          <div
+            className="font-philosopher text-lg font-bold"
+            style={{ color: 'rgba(248,244,236,0.9)' }}
+          >
             Kirtan Rasa
           </div>
-          <div className="text-xs mt-1" style={{ color: '#8A7A60' }}>
+          <div
+            className="font-josefin text-xs mt-1 tracking-[0.2em] uppercase"
+            style={{ color: 'rgba(248,244,236,0.45)' }}
+          >
             Sacred Devotional Music
           </div>
         </div>
 
-        <div className="text-sm" style={{ color: '#8A7A60' }}>
-          © 2026 Kirtan Rasa Music. All rights reserved.
+        <div
+          className="font-josefin"
+          style={{ fontSize: 10, letterSpacing: '0.15em', color: 'rgba(248,244,236,0.5)' }}
+        >
+          © 2026 KIRTAN RASA MUSIC. ALL RIGHTS RESERVED.
         </div>
 
         <div className="flex items-center gap-6">
-          <Link
-            href={SOCIAL_LINKS.spotify}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm transition-colors duration-200 hover:text-[#C9A84C]"
-            style={{ color: '#B8A880' }}
-          >
-            Spotify
-          </Link>
-          <Link
-            href={SOCIAL_LINKS.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm transition-colors duration-200 hover:text-[#C9A84C]"
-            style={{ color: '#B8A880' }}
-          >
-            Instagram
-          </Link>
-          <Link
-            href={SOCIAL_LINKS.facebook}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm transition-colors duration-200 hover:text-[#C9A84C]"
-            style={{ color: '#B8A880' }}
-          >
-            Facebook
-          </Link>
+          {(['spotify', 'instagram', 'facebook'] as const).map((platform) => (
+            <Link
+              key={platform}
+              href={SOCIAL_LINKS[platform]}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-josefin capitalize tracking-[0.1em] text-xs transition-colors duration-200 hover:text-white"
+              style={{ color: 'rgba(248,244,236,0.6)' }}
+            >
+              {platform.charAt(0).toUpperCase() + platform.slice(1)}
+            </Link>
+          ))}
         </div>
       </div>
     </footer>

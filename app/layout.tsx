@@ -1,26 +1,26 @@
 import type { Metadata } from 'next';
-import { Cinzel, Cormorant_Garamond, DM_Sans } from 'next/font/google';
+import { Philosopher, Lora, Josefin_Sans } from 'next/font/google';
 import './globals.css';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 
-const cinzel = Cinzel({
+const philosopher = Philosopher({
   subsets: ['latin'],
-  weight: ['400', '600', '700'],
-  variable: '--font-cinzel',
+  weight: ['400', '700'],
+  variable: '--font-philosopher',
 });
 
-const cormorant = Cormorant_Garamond({
+const lora = Lora({
   subsets: ['latin'],
-  weight: ['300', '400', '600'],
+  weight: ['400', '500', '600'],
   style: ['normal', 'italic'],
-  variable: '--font-cormorant',
+  variable: '--font-lora',
 });
 
-const dmSans = DM_Sans({
+const josefinSans = Josefin_Sans({
   subsets: ['latin'],
-  weight: ['300', '400', '500'],
-  variable: '--font-dm-sans',
+  weight: ['200', '300', '400'],
+  variable: '--font-josefin',
 });
 
 export const metadata: Metadata = {
@@ -36,10 +36,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cinzel.variable} ${cormorant.variable} ${dmSans.variable}`}
-      style={{ backgroundColor: '#0A0704' }}
+      className={`${philosopher.variable} ${lora.variable} ${josefinSans.variable}`}
     >
-      <body className="antialiased font-dm" style={{ backgroundColor: '#0A0704', color: '#E8DCC8' }}>
+      <body
+        className="antialiased font-josefin"
+        style={{ backgroundColor: 'var(--ivory)', color: 'var(--text-dark)' }}
+      >
         <Nav />
         <main>{children}</main>
         <Footer />
