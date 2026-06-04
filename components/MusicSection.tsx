@@ -60,6 +60,7 @@ export default function MusicSection() {
                 (e.currentTarget as HTMLElement).style.borderColor = 'rgba(201,168,76,0.1)';
               }}
             >
+              {/* TODO: replace with real album cover images */}
               {/* Art area */}
               <div
                 className={`relative w-full aspect-square bg-gradient-to-br ${album.gradient} flex items-center justify-center`}

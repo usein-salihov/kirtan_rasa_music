@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -19,17 +20,16 @@ export default function Nav() {
         background: 'linear-gradient(to bottom, rgba(10,7,4,0.95) 0%, rgba(10,7,4,0) 100%)',
       }}
     >
-      <div>
-        <div className="font-cinzel text-xl font-semibold" style={{ color: '#C9A84C' }}>
-          Kirtan Rasa
-        </div>
-        <div
-          className="text-xs tracking-widest uppercase"
-          style={{ color: '#B8A880', fontSize: '0.65rem', letterSpacing: '0.2em' }}
-        >
-          Sacred Music
-        </div>
-      </div>
+      <Link href="/">
+        <Image
+          src="/images/logo.png"
+          alt="Kirtan Rasa Music"
+          width={120}
+          height={80}
+          className="object-contain"
+          priority
+        />
+      </Link>
 
       <div className="flex items-center gap-8">
         {links.map(({ href, label }) => {

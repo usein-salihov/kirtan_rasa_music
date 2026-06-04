@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { SOCIAL_LINKS } from '@/lib/data';
 
@@ -9,6 +10,23 @@ export default function HeroSection() {
       className="relative flex flex-col items-center justify-center overflow-hidden"
       style={{ minHeight: '100vh', backgroundColor: '#0A0704' }}
     >
+      {/* Hero background image */}
+      <Image
+        src="/images/hero-performance.jpg"
+        alt="Kirtan Rasa live performance"
+        fill
+        priority
+        style={{ objectFit: 'cover', objectPosition: 'center' }}
+      />
+
+      {/* Dark overlay over photo */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: 'linear-gradient(to bottom, rgba(10,7,4,0.55), rgba(10,7,4,0.85))',
+        }}
+      />
+
       {/* Radial gradient overlays */}
       <div
         className="absolute inset-0 pointer-events-none"
