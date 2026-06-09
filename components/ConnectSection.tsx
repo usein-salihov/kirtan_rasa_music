@@ -25,6 +25,13 @@ const PLATFORMS = [
     descKey: 'facebookDesc' as const,
     statLabelKey: 'facebookStatLabel' as const,
   },
+  {
+    key: 'youtube' as const,
+    emoji: '🎬',
+    stat: '@kirtanrasamusic',
+    descKey: 'youtubeDesc' as const,
+    statLabelKey: 'youtubeStatLabel' as const,
+  },
 ];
 
 export default function ConnectSection() {
@@ -63,8 +70,8 @@ export default function ConnectSection() {
 
       {/* Platform cards */}
       <div
-        className="grid grid-cols-1 md:grid-cols-3 gap-5 mx-auto mb-16"
-        style={{ maxWidth: 800 }}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mx-auto mb-16"
+        style={{ maxWidth: 1100 }}
       >
         {PLATFORMS.map((p) => (
           <a

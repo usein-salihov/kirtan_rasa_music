@@ -93,21 +93,23 @@ export default function HeroSection() {
             boxShadow: '0 8px 32px rgba(0,0,0,0.15)',
           }}
         >
-          <div
-            className="flex items-center justify-center rounded-lg flex-shrink-0 bg-gradient-to-br from-[#3D2B0F] via-[#7B5520] to-[#C9A84C]"
-            style={{ width: 44, height: 44 }}
-          >
-            <span style={{ fontSize: 20 }}>🎵</span>
+          <div className="relative w-[44px] h-[44px] rounded-lg overflow-hidden flex-shrink-0">
+            <Image
+              src="/images/albums/govinda.png"
+              alt="Govinda"
+              fill
+              className="object-cover"
+            />
           </div>
           <div className="text-left">
             <div className="font-lora font-medium" style={{ fontSize: 13, color: 'var(--text-dark)' }}>
-              KAJI KAJI
+              Sunrise
             </div>
             <div
               className="font-josefin"
               style={{ fontSize: 11, color: 'var(--text-dim)', letterSpacing: '0.05em' }}
             >
-              {t('trackPlays')}
+              Listen on Spotify
             </div>
           </div>
           <div

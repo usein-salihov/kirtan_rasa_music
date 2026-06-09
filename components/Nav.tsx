@@ -59,7 +59,7 @@ export default function Nav() {
               objectFit: 'contain',
               marginTop: 'clamp(-10px, -2vw, -20px)',
               marginBottom: 'clamp(-10px, -2vw, -20px)',
-              filter: isScrolled ? 'none' : 'brightness(0) invert(1)',
+              filter: 'none',
             }}
           />
         </Link>

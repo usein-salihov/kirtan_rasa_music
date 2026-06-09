@@ -60,12 +60,15 @@
     "quote": "Киртанът не е само музика — той е разговор с Божественото, вибрация, която събужда онова, което вече е вътре в нас.",
     "quoteHighlight": "разговор с Божественото",
     "quoteSource": "— Кirtан Раса Музика",
-    "pageTitle": "Контакти"
+    "pageTitle": "Контакти",
+    "youtubeDesc": "Гледай нашите изпълнения и киртан сесии.",
+    "youtubeStatLabel": "Гледай ни"
   },
   "footer": {
     "copyright": "© 2026 Кirtан Раса Музика",
     "spotify": "Spotify",
     "instagram": "Instagram",
-    "facebook": "Facebook"
+    "facebook": "Facebook",
+    "youtube": "YouTube"
   }
 }

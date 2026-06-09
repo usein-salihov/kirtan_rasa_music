@@ -31,7 +31,7 @@ export default function Footer() {
       </div>
 
       <div className="flex items-center gap-6">
-        {(['spotify', 'instagram', 'facebook'] as const).map((p) => (
+        {(['spotify', 'instagram', 'facebook', 'youtube'] as const).map((p) => (
           <Link
             key={p}
             href={SOCIAL_LINKS[p]}

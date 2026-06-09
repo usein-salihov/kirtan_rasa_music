@@ -59,6 +59,7 @@ export const SOCIAL_LINKS = {
   spotify: 'https://open.spotify.com/artist/56PBBitNh1m3LpEvcFFzRt',
   instagram: 'https://www.instagram.com/kirtanrasamusic/',
   facebook: 'https://www.facebook.com/kirtanrasamusic/',
+  youtube: 'https://www.youtube.com/channel/UCLIBrNmb8UEYV4zw55v5HIg',
 };
 
 export const STATS = [

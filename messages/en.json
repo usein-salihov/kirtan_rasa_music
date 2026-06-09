@@ -60,12 +60,15 @@
     "quote": "Kirtan is not just music — it is a conversation with the Divine, a vibration that awakens what is already within.",
     "quoteHighlight": "conversation with the Divine",
     "quoteSource": "— Kirtan Rasa Music",
-    "pageTitle": "Connect"
+    "pageTitle": "Connect",
+    "youtubeDesc": "Watch our performances and kirtan sessions.",
+    "youtubeStatLabel": "Watch Us"
   },
   "footer": {
     "copyright": "© 2026 Kirtan Rasa Music",
     "spotify": "Spotify",
     "instagram": "Instagram",
-    "facebook": "Facebook"
+    "facebook": "Facebook",
+    "youtube": "YouTube"
   }
 }
