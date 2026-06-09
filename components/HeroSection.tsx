@@ -133,7 +133,7 @@ export default function HeroSection() {
             Explore Music
           </Link>
           <Link
-            href="/events"
+            href="/connect"
             className="font-josefin font-light uppercase transition-all duration-200"
             style={{
               border: '1px solid rgba(255,255,255,0.6)',
@@ -150,7 +150,7 @@ export default function HeroSection() {
               (e.currentTarget as HTMLElement).style.backgroundColor = 'transparent';
             }}
           >
-            Upcoming Events
+            Connect With Us
           </Link>
         </div>
       </div>

@@ -36,10 +36,8 @@ const PLATFORMS = [
 export default function ConnectPage() {
   return (
     <div
-      style={{
-        backgroundColor: 'var(--ivory)',
-        padding: '128px 80px 80px',
-      }}
+      className="px-6 pt-24 pb-16 md:px-20 md:pt-32 md:pb-20"
+      style={{ backgroundColor: 'var(--ivory)' }}
     >
       {/* Section header */}
       <div className="text-center mb-12">
@@ -69,7 +67,7 @@ export default function ConnectPage() {
 
       {/* Platform cards */}
       <div
-        className="grid grid-cols-1 md:grid-cols-3 gap-6 mx-auto mb-16"
+        className="grid grid-cols-1 md:grid-cols-3 gap-5 mx-auto mb-16"
         style={{ maxWidth: 800 }}
       >
         {PLATFORMS.map((p) => (

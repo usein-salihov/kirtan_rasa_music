@@ -6,7 +6,7 @@ export default function FeaturedMusicSection() {
   const previewAlbums = ALBUMS.slice(0, 3);
 
   return (
-    <section style={{ backgroundColor: 'var(--ivory)', padding: '80px' }}>
+    <section className="px-6 py-16 md:px-20 md:py-20" style={{ backgroundColor: 'var(--ivory)' }}>
       <div className="mx-auto" style={{ maxWidth: 1000 }}>
         {/* Header */}
         <p
@@ -68,7 +68,7 @@ export default function FeaturedMusicSection() {
         </div>
 
         {/* Albums preview grid */}
-        <div className="grid grid-cols-3 gap-5 mt-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5 mt-12">
           {previewAlbums.map((album) => (
             <a
               key={album.id}

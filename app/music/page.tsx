@@ -38,7 +38,7 @@ export default function MusicPage() {
       </div>
 
       {/* Main content */}
-      <div style={{ padding: '64px 80px' }}>
+      <div className="px-6 py-12 md:px-20 md:py-16">
         {/* Section header */}
         <div className="text-center mb-16">
           <p
@@ -61,9 +61,8 @@ export default function MusicPage() {
 
         {/* Albums grid */}
         <div
-          className="grid gap-6 mx-auto"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 mx-auto"
           style={{
-            gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
             maxWidth: 1000,
             marginBottom: 80,
           }}

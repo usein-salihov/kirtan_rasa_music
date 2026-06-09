@@ -3,7 +3,7 @@ import { EVENTS } from '@/lib/data';
 
 export default function EventsPreviewSection() {
   return (
-    <section style={{ backgroundColor: 'var(--forest)', padding: '80px' }}>
+    <section className="px-6 py-16 md:px-20 md:py-20" style={{ backgroundColor: 'var(--forest)' }}>
       <div className="mx-auto" style={{ maxWidth: 1000 }}>
         {/* Header */}
         <p
@@ -25,18 +25,17 @@ export default function EventsPreviewSection() {
           {EVENTS.map((event) => (
             <div
               key={event.id}
-              className="event-row flex items-center gap-7 rounded-lg"
+              className="event-row flex items-center gap-7 rounded-lg px-4 py-4 md:px-7 md:py-5"
               style={{
                 backgroundColor: 'rgba(255,255,255,0.06)',
                 border: '1px solid rgba(168,212,212,0.12)',
-                padding: '20px 28px',
               }}
             >
               {/* Date */}
-              <div className="text-center" style={{ minWidth: 56 }}>
+              <div className="text-center" style={{ minWidth: 44 }}>
                 <div
                   className="font-philosopher"
-                  style={{ fontSize: 32, color: 'var(--teal-light)', lineHeight: 1 }}
+                  style={{ fontSize: 'clamp(24px, 6vw, 32px)', color: 'var(--teal-light)', lineHeight: 1 }}
                 >
                   {event.day}
                 </div>
@@ -49,11 +48,11 @@ export default function EventsPreviewSection() {
               </div>
 
               {/* Vertical divider */}
-              <div style={{ width: 1, height: 48, backgroundColor: 'rgba(168,212,212,0.15)' }} />
+              <div className="hidden md:block" style={{ width: 1, height: 48, backgroundColor: 'rgba(168,212,212,0.15)' }} />
 
               {/* Info */}
               <div className="flex-1">
-                <div className="font-lora mb-1" style={{ fontSize: 18, color: 'white' }}>
+                <div className="font-lora mb-1" style={{ fontSize: 'clamp(15px, 4vw, 18px)', color: 'white' }}>
                   {event.name}
                 </div>
                 <div

@@ -3,15 +3,15 @@ import { STATS } from '@/lib/data';
 export default function AboutSection() {
   return (
     <section
+      className="px-6 py-16 md:px-20 md:py-20"
       style={{
         backgroundColor: 'var(--warm-white)',
         borderTop: '1px solid rgba(13,110,110,0.08)',
         borderBottom: '1px solid rgba(13,110,110,0.08)',
-        padding: '80px',
       }}
     >
       <div
-        className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center"
+        className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center"
         style={{ maxWidth: 1000 }}
       >
         {/* Left column */}

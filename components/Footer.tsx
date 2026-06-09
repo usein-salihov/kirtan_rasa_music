@@ -4,7 +4,7 @@ import { SOCIAL_LINKS } from '@/lib/data';
 export default function Footer() {
   return (
     <footer
-      className="flex items-center justify-between"
+      className="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left"
       style={{
         backgroundColor: 'var(--forest)',
         borderTop: '3px solid var(--teal-deep)',
@@ -15,7 +15,7 @@ export default function Footer() {
         className="font-philosopher"
         style={{ fontSize: 16, color: 'rgba(248,244,236,0.85)' }}
       >
-        Kirtan Rasa Music
+        <span style={{ whiteSpace: 'nowrap' }}>Kirtan Rasa Music</span>
       </div>
 
       <div

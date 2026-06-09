@@ -9,10 +9,8 @@ export const metadata: Metadata = {
 export default function EventsPage() {
   return (
     <div
-      style={{
-        backgroundColor: 'var(--ivory)',
-        padding: '128px 80px 80px',
-      }}
+      className="px-6 pt-24 pb-16 md:px-20 md:pt-32 md:pb-20"
+      style={{ backgroundColor: 'var(--ivory)' }}
     >
       {/* Section header */}
       <div className="text-center mb-12">
@@ -45,18 +43,17 @@ export default function EventsPage() {
         {EVENTS.map((event) => (
           <div
             key={event.id}
-            className="event-row flex items-center gap-7 rounded-lg"
+            className="event-row flex items-center gap-7 rounded-lg px-4 py-4 md:px-8 md:py-6"
             style={{
               backgroundColor: 'white',
               border: '1px solid rgba(13,110,110,0.1)',
-              padding: '24px 32px',
             }}
           >
             {/* Date */}
-            <div className="text-center" style={{ minWidth: 64 }}>
+            <div className="text-center" style={{ minWidth: 44 }}>
               <div
                 className="font-philosopher"
-                style={{ fontSize: 36, color: 'var(--teal-deep)', lineHeight: 1 }}
+                style={{ fontSize: 'clamp(24px, 6vw, 36px)', color: 'var(--teal-deep)', lineHeight: 1 }}
               >
                 {event.day}
               </div>
@@ -70,12 +67,13 @@ export default function EventsPage() {
 
             {/* Vertical divider */}
             <div
+              className="hidden md:block"
               style={{ width: 1, height: 52, backgroundColor: 'rgba(13,110,110,0.12)' }}
             />
 
             {/* Info */}
             <div className="flex-1">
-              <div className="font-lora mb-1" style={{ fontSize: 20, color: 'var(--text-dark)' }}>
+              <div className="font-lora mb-1" style={{ fontSize: 'clamp(15px, 4vw, 20px)', color: 'var(--text-dark)' }}>
                 {event.name}
               </div>
               <div
