@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { ALBUMS, SOCIAL_LINKS } from '@/lib/data';
 
@@ -33,11 +34,13 @@ export default function FeaturedMusicSection() {
             boxShadow: '0 2px 20px rgba(13,110,110,0.06)',
           }}
         >
-          <div
-            className="rounded-lg flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-[#3D2B0F] via-[#7B5520] to-[#C9A84C]"
-            style={{ width: 72, height: 72 }}
-          >
-            <span style={{ fontSize: 32 }}>🕉</span>
+          <div className="relative w-[72px] h-[72px] rounded-lg overflow-hidden flex-shrink-0">
+            <Image
+              src="/images/albums/songs_of_devotion.jpg"
+              alt="Songs of Devotion"
+              fill
+              className="object-cover"
+            />
           </div>
           <div className="flex-1">
             <div className="font-philosopher" style={{ fontSize: 22, color: 'var(--text-dark)' }}>
@@ -78,10 +81,14 @@ export default function FeaturedMusicSection() {
                 border: '1px solid rgba(13,110,110,0.08)',
               }}
             >
-              <div
-                className={`w-full aspect-square bg-gradient-to-br ${album.gradient} flex items-center justify-center`}
-              >
-                <span style={{ fontSize: 52 }}>{album.emoji}</span>
+              <div className="relative w-full" style={{ paddingTop: '100%' }}>
+                <Image
+                  src={album.image}
+                  alt={album.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
+                />
               </div>
               <div className="p-4">
                 <div className="font-lora" style={{ fontSize: 15, color: 'var(--text-dark)' }}>

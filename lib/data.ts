@@ -1,9 +1,9 @@
 export const ALBUMS = [
-  { id: 1, title: 'Govinda', year: '2026', type: 'Album · Latest', emoji: '🕉', spotifyUrl: 'https://open.spotify.com/album/1AHvvhInzAbGAAY6dgrkUr', gradient: 'from-[#3D2B0F] via-[#7B5520] to-[#C9A84C]' },
-  { id: 2, title: 'Songs of Devotion 2', year: '2022', type: 'Album', emoji: '🙏', spotifyUrl: 'https://open.spotify.com/album/3TjwtBp7eAIZBxg8FCAQpE', gradient: 'from-[#0F1F3D] via-[#203560] to-[#4A7BC8]' },
-  { id: 3, title: 'Songs of Devotion', year: '2022', type: 'Album', emoji: '✨', spotifyUrl: 'https://open.spotify.com/album/6PszgVA7nlJhivgfGAwqb8', gradient: 'from-[#1F0F3D] via-[#5A2080] to-[#C84A9A]' },
-  { id: 4, title: 'Divine Nectar', year: '2022', type: 'Album', emoji: '🌸', spotifyUrl: 'https://open.spotify.com/album/7u3ZR3wfQnDLZk46AcV1uk', gradient: 'from-[#0F3D1F] via-[#207B45] to-[#4AC880]' },
-  { id: 5, title: 'Golden Tears', year: '2022', type: 'Album', emoji: '💫', spotifyUrl: 'https://open.spotify.com/album/3kpK3njkxtcQKKPD7BNNH9', gradient: 'from-[#3D0F0F] via-[#7B2020] to-[#C84A4A]' },
+  { id: 1, title: 'Govinda', year: '2026', type: 'Album · Latest', image: '/images/albums/govinda.png', spotifyUrl: 'https://open.spotify.com/album/1AHvvhInzAbGAAY6dgrkUr' },
+  { id: 2, title: 'Songs of Devotion 2', year: '2022', type: 'Album', image: '/images/albums/songs_of_devotion_2.jpg', spotifyUrl: 'https://open.spotify.com/album/3TjwtBp7eAIZBxg8FCAQpE' },
+  { id: 3, title: 'Songs of Devotion', year: '2022', type: 'Album', image: '/images/albums/songs_of_devotion.jpg', spotifyUrl: 'https://open.spotify.com/album/6PszgVA7nlJhivgfGAwqb8' },
+  { id: 4, title: 'Divine Nectar', year: '2022', type: 'Album', image: '/images/albums/divine_nectar.png', spotifyUrl: 'https://open.spotify.com/album/7u3ZR3wfQnDLZk46AcV1uk' },
+  { id: 5, title: 'Golden Tears', year: '2022', type: 'Album', image: '/images/albums/golden_tears.jpg', spotifyUrl: 'https://open.spotify.com/album/3kpK3njkxtcQKKPD7BNNH9' },
 ];
 
 export const TOP_TRACKS = [

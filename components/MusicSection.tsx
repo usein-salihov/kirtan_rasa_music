@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { ALBUMS, TOP_TRACKS, STATS, SOCIAL_LINKS } from '@/lib/data';
 
 export default function MusicSection() {
@@ -57,7 +58,7 @@ export default function MusicSection() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {ALBUMS.map((album) => (
               <a
-                key={album.title}
+                key={album.id}
                 href={album.spotifyUrl}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -79,12 +80,15 @@ export default function MusicSection() {
                   el.style.boxShadow = '0 2px 16px rgba(13,110,110,0.06)';
                 }}
               >
-                {/* TODO: replace with real album cover images */}
                 {/* Art area */}
-                <div
-                  className={`relative w-full aspect-square bg-gradient-to-br ${album.gradient} flex items-center justify-center`}
-                >
-                  <span style={{ fontSize: 72 }}>{album.emoji}</span>
+                <div className="relative w-full" style={{ paddingTop: '100%' }}>
+                  <Image
+                    src={album.image}
+                    alt={album.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
+                  />
                   {/* Play overlay */}
                   <div
                     className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200"
@@ -181,8 +185,7 @@ export default function MusicSection() {
                     idx < TOP_TRACKS.length - 1 ? '1px solid rgba(13,110,110,0.05)' : 'none',
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.backgroundColor =
-                    'rgba(13,110,110,0.04)';
+                  (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(13,110,110,0.04)';
                 }}
                 onMouseLeave={(e) => {
                   (e.currentTarget as HTMLElement).style.backgroundColor = 'transparent';

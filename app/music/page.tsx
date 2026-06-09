@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { ALBUMS, TOP_TRACKS, STATS, SOCIAL_LINKS } from '@/lib/data';
 
 export const metadata: Metadata = {
@@ -79,10 +80,14 @@ export default function MusicPage() {
                 border: '1px solid rgba(13,110,110,0.08)',
               }}
             >
-              <div
-                className={`w-full aspect-square bg-gradient-to-br ${album.gradient} flex items-center justify-center`}
-              >
-                <span style={{ fontSize: 60 }}>{album.emoji}</span>
+              <div className="relative w-full" style={{ paddingTop: '100%' }}>
+                <Image
+                  src={album.image}
+                  alt={album.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
+                />
               </div>
               <div className="p-4">
                 <div
