@@ -10,7 +10,7 @@ export default function FeaturedMusicSection() {
   const t = useTranslations('music');
   const pathname = usePathname();
   const locale = pathname.split('/')[1] || 'en';
-  const previewAlbums = ALBUMS.slice(0, 3);
+  const featuredAlbums = [ALBUMS[0], ALBUMS[4], ALBUMS[1]];
 
   return (
     <section className="px-6 py-16 md:px-20 md:py-20" style={{ backgroundColor: 'var(--ivory)' }}>
@@ -43,24 +43,21 @@ export default function FeaturedMusicSection() {
         >
           <div className="relative w-[72px] h-[72px] rounded-lg overflow-hidden flex-shrink-0">
             <Image
-              src="/images/albums/songs_of_devotion.jpg"
-              alt="Songs of Devotion"
+              src="/images/albums/govinda.png"
+              alt="Govinda"
               fill
               className="object-cover"
             />
           </div>
           <div className="flex-1">
             <div className="font-philosopher" style={{ fontSize: 22, color: 'var(--text-dark)' }}>
-              KAJI KAJI
+              Govinda
             </div>
             <div
               className="font-josefin mt-1"
               style={{ fontSize: 12, color: 'var(--text-dim)', letterSpacing: '0.1em' }}
             >
-              Songs of Devotion
-            </div>
-            <div className="font-philosopher mt-2" style={{ fontSize: 14, color: 'var(--teal-mid)' }}>
-              350,182 {t('playsLabel')}
+              Govinda
             </div>
           </div>
           <a
@@ -76,7 +73,7 @@ export default function FeaturedMusicSection() {
 
         {/* Albums preview grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5 mt-12">
-          {previewAlbums.map((album) => (
+          {featuredAlbums.map((album) => (
             <a
               key={album.id}
               href={album.spotifyUrl}
