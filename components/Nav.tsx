@@ -53,7 +53,7 @@ export default function Nav() {
             src="/images/logo.png"
             alt="Kirtan Rasa Music"
             style={{
-              height: 'clamp(60px, 10vw, 140px)',
+              height: 'clamp(60px, 10vw, 100px)',
               width: 'auto',
               display: 'block',
               objectFit: 'contain',
