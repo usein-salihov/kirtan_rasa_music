@@ -30,14 +30,13 @@ export default function HeroSection() {
         className="absolute inset-0"
         style={{
           background:
-            'linear-gradient(to bottom, rgba(13,40,40,0.5) 0%, rgba(13,40,40,0.2) 35%, rgba(13,40,40,0.3) 65%, rgba(251,247,240,1) 100%)',
+            'linear-gradient(to bottom, rgba(13,40,40,0.1) 0%, rgba(13,40,40,0.15) 40%, rgba(13,40,40,0.25) 65%, rgba(251,247,240,1) 100%)',
         }}
       />
 
       {/* Layer 3 — content */}
       <div
         className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-6"
-        style={{ marginTop: -40 }}
       >
         {/* Overtitle */}
         <p
