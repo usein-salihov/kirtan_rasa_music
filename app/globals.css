@@ -9,15 +9,51 @@
   --teal-mid: #5BA8A8;
   --teal-light: #A8D4D4;
   --saffron: #C4813A;
-  --earth: #8B5E2A;
   --forest: #2A3A35;
   --text-dark: #1a3a3a;
   --text-mid: #5B7A7A;
   --text-dim: #8AA8A8;
-  --surface: #F5F0E8;
-  --surface-2: #EDE4D4;
 }
+
+html { scroll-behavior: smooth; }
+body { background: var(--ivory); color: var(--text-dark); }
 
 .font-philosopher { font-family: var(--font-philosopher); }
 .font-lora { font-family: var(--font-lora); }
 .font-josefin { font-family: var(--font-josefin); }
+
+.card-hover {
+  transition: all 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 40px rgba(13, 110, 110, 0.15) !important;
+  border-color: rgba(13, 110, 110, 0.3) !important;
+}
+
+.platform-card {
+  transition: all 0.3s ease;
+}
+.platform-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 40px rgba(13, 110, 110, 0.12) !important;
+  border-color: var(--teal-mid) !important;
+}
+
+.event-row {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.event-row:hover {
+  background-color: rgba(168, 212, 212, 0.08) !important;
+  border-color: rgba(168, 212, 212, 0.25) !important;
+}
+
+.track-row {
+  transition: background-color 0.15s ease;
+  display: flex;
+  align-items: center;
+}
+.track-row:hover {
+  background-color: rgba(13, 110, 110, 0.04) !important;
+}

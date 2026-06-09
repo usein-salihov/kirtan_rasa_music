@@ -25,7 +25,7 @@ const josefinSans = Josefin_Sans({
 
 export const metadata: Metadata = {
   title: 'Kirtan Rasa Music',
-  description: 'Sacred devotional kirtan music. Listen on Spotify.',
+  description: 'Sacred devotional kirtan music from the heart. Listen on Spotify.',
 };
 
 export default function RootLayout({
