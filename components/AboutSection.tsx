@@ -23,12 +23,32 @@ export default function AboutSection() {
       >
         {/* Left column */}
         <div>
-          <p
-            className="font-josefin uppercase mb-3"
-            style={{ fontSize: 9, letterSpacing: '0.5em', color: 'var(--saffron)' }}
+          {/* Saffron pill tag */}
+          <div
+            className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full"
+            style={{
+              backgroundColor: 'rgba(196,129,58,0.1)',
+              border: '1px solid rgba(196,129,58,0.3)',
+            }}
           >
-            {t('label')}
-          </p>
+            <span
+              style={{
+                width: 6,
+                height: 6,
+                borderRadius: '50%',
+                backgroundColor: 'var(--saffron)',
+                display: 'inline-block',
+                flexShrink: 0,
+              }}
+            />
+            <span
+              className="font-josefin uppercase"
+              style={{ fontSize: 10, letterSpacing: '0.4em', color: 'var(--saffron)' }}
+            >
+              {t('label')}
+            </span>
+          </div>
+
           <h2
             className="font-philosopher font-bold mb-4"
             style={{ fontSize: 'clamp(28px, 4vw, 44px)', color: 'var(--text-dark)' }}

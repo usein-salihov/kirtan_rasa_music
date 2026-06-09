@@ -10,6 +10,7 @@ const PLATFORMS = [
     stat: '7.5K',
     descKey: 'spotifyDesc' as const,
     statLabelKey: 'spotifyStatLabel' as const,
+    hoverColor: '#1DB954',
   },
   {
     key: 'instagram' as const,
@@ -17,6 +18,7 @@ const PLATFORMS = [
     stat: '@kirtanrasamusic',
     descKey: 'instagramDesc' as const,
     statLabelKey: 'instagramStatLabel' as const,
+    hoverColor: '#E1306C',
   },
   {
     key: 'facebook' as const,
@@ -24,6 +26,7 @@ const PLATFORMS = [
     stat: '@kirtanrasamusic',
     descKey: 'facebookDesc' as const,
     statLabelKey: 'facebookStatLabel' as const,
+    hoverColor: '#1877F2',
   },
   {
     key: 'youtube' as const,
@@ -31,6 +34,7 @@ const PLATFORMS = [
     stat: '@kirtanrasamusic',
     descKey: 'youtubeDesc' as const,
     statLabelKey: 'youtubeStatLabel' as const,
+    hoverColor: '#FF0000',
   },
 ];
 
@@ -39,7 +43,7 @@ export default function ConnectSection() {
 
   return (
     <div
-      className="px-6 pt-24 pb-16 md:px-20 md:pt-32 md:pb-20"
+      className="px-6 py-12 md:px-20 md:py-16"
       style={{ backgroundColor: 'var(--ivory)' }}
     >
       {/* Section header */}
@@ -79,18 +83,37 @@ export default function ConnectSection() {
             href={SOCIAL_LINKS[p.key]}
             target="_blank"
             rel="noopener noreferrer"
-            className="platform-card block rounded-lg text-center"
+            className="platform-card block rounded-lg text-center transition-all duration-200"
             style={{
               backgroundColor: 'white',
               border: '1px solid rgba(13,110,110,0.08)',
-              padding: 40,
+              borderTop: '3px solid transparent',
+              padding: 32,
               textDecoration: 'none',
+            }}
+            onMouseEnter={(e) => {
+              const el = e.currentTarget as HTMLElement;
+              el.style.borderTop = `3px solid ${p.hoverColor}`;
+              el.style.borderRight = '1px solid rgba(13,110,110,0.2)';
+              el.style.borderBottom = '1px solid rgba(13,110,110,0.2)';
+              el.style.borderLeft = '1px solid rgba(13,110,110,0.2)';
+              el.style.transform = 'translateY(-4px)';
+              el.style.boxShadow = '0 8px 32px rgba(13,110,110,0.12)';
+            }}
+            onMouseLeave={(e) => {
+              const el = e.currentTarget as HTMLElement;
+              el.style.borderTop = '3px solid transparent';
+              el.style.borderRight = '1px solid rgba(13,110,110,0.08)';
+              el.style.borderBottom = '1px solid rgba(13,110,110,0.08)';
+              el.style.borderLeft = '1px solid rgba(13,110,110,0.08)';
+              el.style.transform = 'translateY(0)';
+              el.style.boxShadow = 'none';
             }}
           >
             <div className="text-4xl mb-5">{p.emoji}</div>
             <div
               className="font-philosopher mb-3"
-              style={{ fontSize: 18, color: 'var(--teal-deep)' }}
+              style={{ fontSize: 20, color: 'var(--teal-deep)' }}
             >
               {p.key.charAt(0).toUpperCase() + p.key.slice(1)}
             </div>

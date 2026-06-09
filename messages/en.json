@@ -10,9 +10,10 @@
     "title1": "KIRTAN",
     "title2": "RASA",
     "subtitle": "Where ancient mantra meets the modern heart",
+    "description": "A Bulgarian devotional music collective",
     "trackPlays": "350K plays · Listen on Spotify",
     "btnMusic": "Explore Music",
-    "btnConnect": "Connect With Us"
+    "btnConnect": "Upcoming Events"
   },
   "about": {
     "label": "Our Story",
@@ -32,6 +33,7 @@
     "topTracks": "Top Tracks",
     "onSpotify": "On Spotify",
     "pageTitle": "Music",
+    "pageSubtitle": "5 albums · Stream on Spotify",
     "albumLatest": "Album · Latest",
     "album": "Album"
   },
@@ -39,6 +41,7 @@
     "label": "Live",
     "title": "Upcoming Events",
     "subtitle": "Join us for live kirtan sessions, festivals, and sacred sound journeys.",
+    "pageSubtitle": "Join us for live kirtan and sacred music sessions",
     "allEvents": "All Events →",
     "pastEvents": "Past Events",
     "noPastEvents": "No past events to show yet.",
@@ -51,6 +54,7 @@
     "label": "Find Us",
     "title": "Connect",
     "subtitle": "Join our community and stay connected with the latest releases and events.",
+    "pageSubtitle": "Find us across platforms and join the community",
     "spotifyDesc": "Stream our full discography. All albums, all tracks.",
     "spotifyStatLabel": "Monthly Listeners",
     "instagramDesc": "Behind the scenes and devotional moments.",

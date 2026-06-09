@@ -12,9 +12,9 @@ export default function MusicSection() {
 
   return (
     <section className="min-h-screen pb-24" style={{ backgroundColor: 'var(--ivory)' }}>
-      {/* Stats bar — pt-24 offsets the fixed nav */}
+      {/* Stats bar — no top padding; hero banner handles nav clearance */}
       <div
-        className="grid grid-cols-2 md:grid-cols-4 pt-24 md:pt-28"
+        className="grid grid-cols-2 md:grid-cols-4"
         style={{
           backgroundColor: 'var(--warm-white)',
           borderBottom: '1px solid rgba(13,110,110,0.1)',
@@ -41,7 +41,7 @@ export default function MusicSection() {
         ))}
       </div>
 
-      <div className="px-6 pt-20">
+      <div className="px-6 pt-16">
         {/* Albums section */}
         <div className="max-w-[1100px] mx-auto mb-24">
           <p
@@ -72,17 +72,24 @@ export default function MusicSection() {
                 style={{
                   backgroundColor: 'white',
                   border: '1px solid rgba(13,110,110,0.08)',
+                  borderTop: '3px solid transparent',
                   borderRadius: 8,
                   boxShadow: '0 2px 16px rgba(13,110,110,0.06)',
                 }}
                 onMouseEnter={(e) => {
                   const el = e.currentTarget as HTMLElement;
-                  el.style.borderColor = 'rgba(13,110,110,0.3)';
+                  el.style.borderTop = '3px solid var(--teal-deep)';
+                  el.style.borderRight = '1px solid rgba(13,110,110,0.2)';
+                  el.style.borderBottom = '1px solid rgba(13,110,110,0.2)';
+                  el.style.borderLeft = '1px solid rgba(13,110,110,0.2)';
                   el.style.boxShadow = '0 8px 40px rgba(13,110,110,0.15)';
                 }}
                 onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLElement;
-                  el.style.borderColor = 'rgba(13,110,110,0.08)';
+                  el.style.borderTop = '3px solid transparent';
+                  el.style.borderRight = '1px solid rgba(13,110,110,0.08)';
+                  el.style.borderBottom = '1px solid rgba(13,110,110,0.08)';
+                  el.style.borderLeft = '1px solid rgba(13,110,110,0.08)';
                   el.style.boxShadow = '0 2px 16px rgba(13,110,110,0.06)';
                 }}
               >

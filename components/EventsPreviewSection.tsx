@@ -14,13 +14,32 @@ export default function EventsPreviewSection() {
   return (
     <section className="px-6 py-16 md:px-20 md:py-20" style={{ backgroundColor: 'var(--forest)' }}>
       <div className="mx-auto" style={{ maxWidth: 1000 }}>
-        {/* Header */}
-        <p
-          className="font-josefin uppercase mb-3"
-          style={{ fontSize: 9, letterSpacing: '0.5em', color: 'var(--teal-light)' }}
+        {/* Teal-light pill tag */}
+        <div
+          className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full"
+          style={{
+            backgroundColor: 'rgba(168,212,212,0.1)',
+            border: '1px solid rgba(168,212,212,0.2)',
+          }}
         >
-          {t('label')}
-        </p>
+          <span
+            style={{
+              width: 6,
+              height: 6,
+              borderRadius: '50%',
+              backgroundColor: 'var(--teal-light)',
+              display: 'inline-block',
+              flexShrink: 0,
+            }}
+          />
+          <span
+            className="font-josefin uppercase"
+            style={{ fontSize: 10, letterSpacing: '0.4em', color: 'var(--teal-light)' }}
+          >
+            {t('label')}
+          </span>
+        </div>
+
         <h2
           className="font-philosopher font-bold mb-4"
           style={{ fontSize: 'clamp(28px, 4vw, 44px)', color: 'white' }}
@@ -88,6 +107,14 @@ export default function EventsPreviewSection() {
                 }}
               >
                 {t(event.tag)}
+              </div>
+
+              {/* Right arrow */}
+              <div
+                className="font-josefin flex-shrink-0"
+                style={{ fontSize: 14, color: 'var(--teal-light)', opacity: 0.5 }}
+              >
+                →
               </div>
             </div>
           ))}

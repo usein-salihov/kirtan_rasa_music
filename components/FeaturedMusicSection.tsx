@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
-import { ALBUMS, SOCIAL_LINKS } from '@/lib/data';
+import { ALBUMS } from '@/lib/data';
 
 export default function FeaturedMusicSection() {
   const t = useTranslations('music');
@@ -15,74 +15,97 @@ export default function FeaturedMusicSection() {
   return (
     <section className="px-6 py-16 md:px-20 md:py-20" style={{ backgroundColor: 'var(--ivory)' }}>
       <div className="mx-auto" style={{ maxWidth: 1000 }}>
-        {/* Header */}
-        <p
-          className="font-josefin uppercase mb-3"
-          style={{ fontSize: 9, letterSpacing: '0.5em', color: 'var(--saffron)' }}
+        {/* Featured pill tag */}
+        <div
+          className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full"
+          style={{
+            backgroundColor: 'rgba(13,110,110,0.08)',
+            border: '1px solid rgba(13,110,110,0.2)',
+          }}
         >
-          {t('featuredLabel')}
-        </p>
+          <span
+            style={{
+              width: 6,
+              height: 6,
+              borderRadius: '50%',
+              backgroundColor: 'var(--teal-deep)',
+              display: 'inline-block',
+              flexShrink: 0,
+            }}
+          />
+          <span
+            className="font-josefin uppercase"
+            style={{ fontSize: 10, letterSpacing: '0.4em', color: 'var(--teal-deep)' }}
+          >
+            {t('featuredLabel')}
+          </span>
+        </div>
+
         <h2
           className="font-philosopher font-bold mb-4"
           style={{ fontSize: 'clamp(28px, 4vw, 44px)', color: 'var(--text-dark)' }}
         >
           {t('featuredTitle')}
         </h2>
-        <div style={{ width: 48, height: 2, backgroundColor: 'var(--teal-light)', marginBottom: 40 }} />
+        <div style={{ width: 48, height: 2, backgroundColor: 'var(--teal-light)', marginBottom: 32 }} />
 
-        {/* Featured track card */}
+        {/* Discography saffron pill */}
         <div
-          className="flex items-center gap-6 rounded-xl"
+          className="inline-flex items-center gap-2 mb-5 px-4 py-1.5 rounded-full"
           style={{
-            backgroundColor: 'white',
-            border: '1px solid rgba(13,110,110,0.08)',
-            padding: 28,
-            maxWidth: 520,
-            boxShadow: '0 2px 20px rgba(13,110,110,0.06)',
+            backgroundColor: 'rgba(196,129,58,0.1)',
+            border: '1px solid rgba(196,129,58,0.3)',
           }}
         >
-          <div className="relative w-[72px] h-[72px] rounded-lg overflow-hidden flex-shrink-0">
-            <Image
-              src="/images/albums/govinda.png"
-              alt="Govinda"
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div className="flex-1">
-            <div className="font-philosopher" style={{ fontSize: 22, color: 'var(--text-dark)' }}>
-              Govinda
-            </div>
-            <div
-              className="font-josefin mt-1"
-              style={{ fontSize: 12, color: 'var(--text-dim)', letterSpacing: '0.1em' }}
-            >
-              Govinda
-            </div>
-          </div>
-          <a
-            href={SOCIAL_LINKS.spotify}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center rounded-full flex-shrink-0 text-white transition-opacity duration-200 hover:opacity-85"
-            style={{ width: 48, height: 48, backgroundColor: '#1DB954', fontSize: 16 }}
+          <span
+            style={{
+              width: 6,
+              height: 6,
+              borderRadius: '50%',
+              backgroundColor: 'var(--saffron)',
+              display: 'inline-block',
+              flexShrink: 0,
+            }}
+          />
+          <span
+            className="font-josefin uppercase"
+            style={{ fontSize: 10, letterSpacing: '0.4em', color: 'var(--saffron)' }}
           >
-            ▶
-          </a>
+            {t('discographyLabel')}
+          </span>
         </div>
 
         {/* Albums preview grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5 mt-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
           {featuredAlbums.map((album) => (
             <a
               key={album.id}
               href={album.spotifyUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="block rounded-lg overflow-hidden card-hover"
+              className="block rounded-lg overflow-hidden transition-all duration-200"
               style={{
                 backgroundColor: 'white',
                 border: '1px solid rgba(13,110,110,0.08)',
+                borderTop: '3px solid transparent',
+              }}
+              onMouseEnter={(e) => {
+                const el = e.currentTarget as HTMLElement;
+                el.style.borderTop = '3px solid var(--teal-deep)';
+                el.style.borderRight = '1px solid rgba(13,110,110,0.2)';
+                el.style.borderBottom = '1px solid rgba(13,110,110,0.2)';
+                el.style.borderLeft = '1px solid rgba(13,110,110,0.2)';
+                el.style.transform = 'translateY(-4px)';
+                el.style.boxShadow = '0 8px 32px rgba(13,110,110,0.12)';
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget as HTMLElement;
+                el.style.borderTop = '3px solid transparent';
+                el.style.borderRight = '1px solid rgba(13,110,110,0.08)';
+                el.style.borderBottom = '1px solid rgba(13,110,110,0.08)';
+                el.style.borderLeft = '1px solid rgba(13,110,110,0.08)';
+                el.style.transform = 'translateY(0)';
+                el.style.boxShadow = 'none';
               }}
             >
               <div className="relative w-full" style={{ paddingTop: '100%' }}>
