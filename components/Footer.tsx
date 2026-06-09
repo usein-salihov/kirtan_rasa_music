@@ -1,7 +1,12 @@
+'use client';
+
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import { SOCIAL_LINKS } from '@/lib/data';
 
 export default function Footer() {
+  const t = useTranslations('footer');
+
   return (
     <footer
       className="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left"
@@ -22,7 +27,7 @@ export default function Footer() {
         className="font-josefin uppercase"
         style={{ fontSize: 10, letterSpacing: '0.15em', color: 'rgba(248,244,236,0.4)' }}
       >
-        © 2026 Kirtan Rasa Music
+        {t('copyright')}
       </div>
 
       <div className="flex items-center gap-6">
@@ -35,7 +40,7 @@ export default function Footer() {
             className="font-josefin uppercase transition-colors duration-200 hover:text-white"
             style={{ fontSize: 11, letterSpacing: '0.15em', color: 'rgba(248,244,236,0.5)' }}
           >
-            {p.charAt(0).toUpperCase() + p.slice(1)}
+            {t(p)}
           </Link>
         ))}
       </div>

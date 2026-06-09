@@ -1,35 +1,41 @@
 'use client';
 
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import { ALBUMS, TOP_TRACKS, STATS, SOCIAL_LINKS } from '@/lib/data';
 
+const STAT_KEYS = ['stat1Label', 'stat2Label', 'stat3Label', 'stat4Label'] as const;
+
 export default function MusicSection() {
+  const tMusic = useTranslations('music');
+  const tAbout = useTranslations('about');
+
   return (
     <section className="min-h-screen pb-24" style={{ backgroundColor: 'var(--ivory)' }}>
-      {/* Stats bar */}
+      {/* Stats bar — pt-24 offsets the fixed nav */}
       <div
-        className="grid grid-cols-2 md:grid-cols-4"
+        className="grid grid-cols-2 md:grid-cols-4 pt-24 md:pt-28"
         style={{
           backgroundColor: 'var(--warm-white)',
           borderBottom: '1px solid rgba(13,110,110,0.1)',
         }}
       >
-        {STATS.map(({ num, label }) => (
+        {STATS.map((stat, i) => (
           <div
-            key={label}
+            key={stat.label}
             className="flex flex-col items-center justify-center py-10 px-4"
           >
             <div
               className="font-philosopher leading-none mb-2"
               style={{ fontSize: 40, color: 'var(--teal-deep)' }}
             >
-              {num}
+              {stat.num}
             </div>
             <div
               className="font-josefin uppercase"
               style={{ fontSize: 9, letterSpacing: '0.3em', color: 'var(--text-dim)' }}
             >
-              {label}
+              {tAbout(STAT_KEYS[i])}
             </div>
           </div>
         ))}
@@ -42,20 +48,20 @@ export default function MusicSection() {
             className="font-josefin uppercase text-center mb-3"
             style={{ fontSize: 9, letterSpacing: '0.5em', color: 'var(--saffron)' }}
           >
-            Discography
+            {tMusic('discographyLabel')}
           </p>
           <h2
             className="font-philosopher font-bold text-center mb-4"
             style={{ color: 'var(--text-dark)', fontSize: 'clamp(32px, 5vw, 52px)' }}
           >
-            Our Albums
+            {tMusic('pageTitle')}
           </h2>
           <div
             className="mx-auto mb-12"
             style={{ width: 60, height: 1, backgroundColor: 'var(--teal-light)' }}
           />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
             {ALBUMS.map((album) => (
               <a
                 key={album.id}
@@ -87,7 +93,7 @@ export default function MusicSection() {
                     alt={album.title}
                     fill
                     className="object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
+                    sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
                   />
                   {/* Play overlay */}
                   <div
@@ -135,13 +141,13 @@ export default function MusicSection() {
             className="font-josefin uppercase text-center mb-3"
             style={{ fontSize: 9, letterSpacing: '0.5em', color: 'var(--saffron)' }}
           >
-            Streaming
+            {tMusic('onSpotify')}
           </p>
           <h2
             className="font-philosopher font-bold text-center mb-4"
             style={{ color: 'var(--text-dark)', fontSize: 'clamp(32px, 5vw, 52px)' }}
           >
-            Top Tracks
+            {tMusic('topTracks')}
           </h2>
           <div
             className="mx-auto mb-12"
@@ -167,8 +173,12 @@ export default function MusicSection() {
             >
               <div className="font-philosopher text-sm" style={{ color: 'var(--teal-deep)' }}>#</div>
               <div />
-              <div className="font-philosopher text-sm" style={{ color: 'var(--teal-deep)' }}>Title</div>
-              <div className="font-philosopher text-sm" style={{ color: 'var(--teal-deep)' }}>Plays</div>
+              <div className="font-philosopher text-sm" style={{ color: 'var(--teal-deep)' }}>
+                {tMusic('topTracks')}
+              </div>
+              <div className="font-philosopher text-sm" style={{ color: 'var(--teal-deep)' }}>
+                {tMusic('playsLabel')}
+              </div>
             </div>
 
             {TOP_TRACKS.map((track, idx) => (

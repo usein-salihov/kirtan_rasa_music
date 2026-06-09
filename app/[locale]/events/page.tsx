@@ -1,12 +1,22 @@
-import type { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 import { EVENTS } from '@/lib/data';
 
-export const metadata: Metadata = {
-  title: 'Events — Kirtan Rasa Music',
-  description: 'Join Kirtan Rasa Music live — kirtan sessions, festivals, and sacred sound journeys.',
-};
+export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
+  const t = await getTranslations({ locale, namespace: 'events' });
+  return {
+    title: `${t('pageTitle')} — Kirtan Rasa Music`,
+    description: t('subtitle'),
+  };
+}
 
-export default function EventsPage() {
+export default async function EventsPage({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  const t = await getTranslations({ locale, namespace: 'events' });
+  const isBg = locale === 'bg';
+
   return (
     <div
       className="px-6 pt-24 pb-16 md:px-20 md:pt-32 md:pb-20"
@@ -18,13 +28,13 @@ export default function EventsPage() {
           className="font-josefin uppercase mb-3"
           style={{ fontSize: 9, letterSpacing: '0.5em', color: 'var(--saffron)' }}
         >
-          Live
+          {t('label')}
         </p>
         <h1
           className="font-philosopher font-bold mb-4"
           style={{ fontSize: 'clamp(28px, 4vw, 52px)', color: 'var(--text-dark)' }}
         >
-          Upcoming Events
+          {t('title')}
         </h1>
         <div
           className="mx-auto mb-5"
@@ -34,7 +44,7 @@ export default function EventsPage() {
           className="font-lora italic mx-auto"
           style={{ fontSize: 18, color: 'var(--text-mid)', maxWidth: 480 }}
         >
-          Join us for live kirtan sessions, festivals, and sacred sound journeys.
+          {t('subtitle')}
         </p>
       </div>
 
@@ -61,7 +71,7 @@ export default function EventsPage() {
                 className="font-josefin uppercase mt-1"
                 style={{ fontSize: 10, letterSpacing: '0.3em', color: 'var(--text-dim)' }}
               >
-                {event.month}
+                {isBg ? event.monthBg : event.month}
               </div>
             </div>
 
@@ -73,14 +83,17 @@ export default function EventsPage() {
 
             {/* Info */}
             <div className="flex-1">
-              <div className="font-lora mb-1" style={{ fontSize: 'clamp(15px, 4vw, 20px)', color: 'var(--text-dark)' }}>
-                {event.name}
+              <div
+                className="font-lora mb-1"
+                style={{ fontSize: 'clamp(15px, 4vw, 20px)', color: 'var(--text-dark)' }}
+              >
+                {isBg ? event.nameBg : event.name}
               </div>
               <div
                 className="font-josefin"
                 style={{ fontSize: 12, color: 'var(--text-dim)', letterSpacing: '0.05em' }}
               >
-                {event.location}
+                {isBg ? event.locationBg : event.location}
               </div>
             </div>
 
@@ -96,7 +109,7 @@ export default function EventsPage() {
                 borderRadius: 999,
               }}
             >
-              {event.tag}
+              {t(event.tag)}
             </div>
           </div>
         ))}
@@ -108,13 +121,13 @@ export default function EventsPage() {
           className="font-philosopher mb-4"
           style={{ fontSize: 22, color: 'var(--text-dim)' }}
         >
-          Past Events
+          {t('pastEvents')}
         </h2>
         <p
           className="font-lora italic"
           style={{ fontSize: 16, color: 'var(--text-dim)' }}
         >
-          No past events to show yet.
+          {t('noPastEvents')}
         </p>
       </div>
     </div>

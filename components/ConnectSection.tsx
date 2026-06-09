@@ -1,126 +1,143 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { SOCIAL_LINKS } from '@/lib/data';
 
 const PLATFORMS = [
   {
     key: 'spotify' as const,
     emoji: '🎵',
-    name: 'Spotify',
-    description: 'Stream our full discography and add to your playlists',
-    stat: '7.5K Monthly Listeners',
+    stat: '7.5K',
+    descKey: 'spotifyDesc' as const,
+    statLabelKey: 'spotifyStatLabel' as const,
   },
   {
     key: 'instagram' as const,
     emoji: '📸',
-    name: 'Instagram',
-    description: 'Behind-the-scenes, practice sessions, and kirtan moments',
-    stat: 'Follow the Journey',
+    stat: '@kirtanrasamusic',
+    descKey: 'instagramDesc' as const,
+    statLabelKey: 'instagramStatLabel' as const,
   },
   {
     key: 'facebook' as const,
     emoji: '🌐',
-    name: 'Facebook',
-    description: 'Event announcements, live recordings, and community',
-    stat: 'Join the Community',
+    stat: '@kirtanrasamusic',
+    descKey: 'facebookDesc' as const,
+    statLabelKey: 'facebookStatLabel' as const,
   },
 ];
 
 export default function ConnectSection() {
+  const t = useTranslations('connect');
+
   return (
-    <section
-      className="min-h-screen pt-32 pb-24 px-6"
+    <div
+      className="px-6 pt-24 pb-16 md:px-20 md:pt-32 md:pb-20"
       style={{ backgroundColor: 'var(--ivory)' }}
     >
-      <div className="max-w-5xl mx-auto">
-        {/* Header */}
+      {/* Section header */}
+      <div className="text-center mb-12">
         <p
-          className="font-josefin uppercase text-center mb-4"
+          className="font-josefin uppercase mb-3"
           style={{ fontSize: 9, letterSpacing: '0.5em', color: 'var(--saffron)' }}
         >
-          Find Us Online
+          {t('label')}
         </p>
         <h1
-          className="font-philosopher font-bold text-center mb-4"
-          style={{ color: 'var(--text-dark)', fontSize: 'clamp(28px, 4vw, 48px)' }}
+          className="font-philosopher font-bold mb-4"
+          style={{ fontSize: 'clamp(28px, 4vw, 52px)', color: 'var(--text-dark)' }}
         >
-          Connect With Us
+          {t('title')}
         </h1>
-        <p
-          className="font-lora italic text-center mb-16"
-          style={{ fontSize: 18, color: 'var(--text-mid)' }}
-        >
-          Join the community wherever you are
-        </p>
-
-        {/* Platform cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
-          {PLATFORMS.map((p) => (
-            <a
-              key={p.key}
-              href={SOCIAL_LINKS[p.key]}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block p-8 text-center transition-all duration-300 hover:-translate-y-1"
-              style={{
-                backgroundColor: 'white',
-                border: '1px solid rgba(13,110,110,0.08)',
-                borderRadius: 8,
-              }}
-              onMouseEnter={(e) => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.borderColor = 'var(--teal-mid)';
-                el.style.boxShadow = '0 8px 40px rgba(13,110,110,0.12)';
-              }}
-              onMouseLeave={(e) => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.borderColor = 'rgba(13,110,110,0.08)';
-                el.style.boxShadow = 'none';
-              }}
-            >
-              <div className="text-4xl mb-5">{p.emoji}</div>
-              <div
-                className="font-philosopher mb-3"
-                style={{ fontSize: 18, color: 'var(--teal-deep)' }}
-              >
-                {p.name}
-              </div>
-              <p
-                className="font-lora leading-relaxed mb-5"
-                style={{ fontSize: 13, color: 'var(--text-mid)' }}
-              >
-                {p.description}
-              </p>
-              <div
-                className="font-philosopher"
-                style={{ fontSize: 22, color: 'var(--text-dark)' }}
-              >
-                {p.stat}
-              </div>
-            </a>
-          ))}
-        </div>
-
-        {/* Quote strip */}
         <div
-          className="px-10 py-12 text-center"
-          style={{
-            backgroundColor: 'var(--warm-white)',
-            border: '1px solid rgba(13,110,110,0.1)',
-            borderRadius: 8,
-            borderTop: '3px solid var(--teal-deep)',
-          }}
+          className="mx-auto mb-5"
+          style={{ width: 48, height: 2, backgroundColor: 'var(--teal-light)' }}
+        />
+        <p
+          className="font-lora italic mx-auto"
+          style={{ fontSize: 18, color: 'var(--text-mid)', maxWidth: 400 }}
         >
-          <blockquote
-            className="font-lora italic leading-relaxed"
-            style={{ color: 'var(--text-dark)', fontSize: 'clamp(18px, 2.5vw, 26px)' }}
+          {t('subtitle')}
+        </p>
+      </div>
+
+      {/* Platform cards */}
+      <div
+        className="grid grid-cols-1 md:grid-cols-3 gap-5 mx-auto mb-16"
+        style={{ maxWidth: 800 }}
+      >
+        {PLATFORMS.map((p) => (
+          <a
+            key={p.key}
+            href={SOCIAL_LINKS[p.key]}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="platform-card block rounded-lg text-center"
+            style={{
+              backgroundColor: 'white',
+              border: '1px solid rgba(13,110,110,0.08)',
+              padding: 40,
+              textDecoration: 'none',
+            }}
           >
-            &ldquo;Kirtan is not just music — it is a{' '}
-            <span style={{ color: 'var(--teal-deep)' }}>conversation with the Divine</span>, a
-            vibration that awakens what is already within.&rdquo;
-          </blockquote>
+            <div className="text-4xl mb-5">{p.emoji}</div>
+            <div
+              className="font-philosopher mb-3"
+              style={{ fontSize: 18, color: 'var(--teal-deep)' }}
+            >
+              {p.key.charAt(0).toUpperCase() + p.key.slice(1)}
+            </div>
+            <p
+              className="font-lora mb-5"
+              style={{ fontSize: 13, color: 'var(--text-mid)', lineHeight: 1.6 }}
+            >
+              {t(p.descKey)}
+            </p>
+            <div
+              className="font-philosopher"
+              style={{ fontSize: 22, color: 'var(--text-dark)' }}
+            >
+              {p.stat}
+            </div>
+            <div
+              className="font-josefin uppercase mt-1"
+              style={{ fontSize: 10, color: 'var(--text-dim)' }}
+            >
+              {t(p.statLabelKey)}
+            </div>
+          </a>
+        ))}
+      </div>
+
+      {/* Quote strip */}
+      <div
+        className="relative rounded-lg text-center mx-auto"
+        style={{
+          maxWidth: 672,
+          backgroundColor: 'var(--warm-white)',
+          border: '1px solid rgba(13,110,110,0.1)',
+          padding: 48,
+        }}
+      >
+        <div
+          className="absolute top-0 left-0 right-0 rounded-t-lg"
+          style={{ height: 3, backgroundColor: 'var(--teal-deep)' }}
+        />
+        <blockquote
+          className="font-lora italic leading-relaxed mb-6"
+          style={{ fontSize: 'clamp(18px, 2.5vw, 26px)', color: 'var(--text-dark)' }}
+        >
+          &ldquo;{t('quote').split(t('quoteHighlight'))[0]}
+          <span style={{ color: 'var(--teal-deep)' }}>{t('quoteHighlight')}</span>
+          {t('quote').split(t('quoteHighlight'))[1]}&rdquo;
+        </blockquote>
+        <div
+          className="font-josefin uppercase"
+          style={{ fontSize: 10, letterSpacing: '0.3em', color: 'var(--text-dim)' }}
+        >
+          {t('quoteSource')}
         </div>
       </div>
-    </section>
+    </div>
   );
 }

@@ -1,0 +1,71 @@
+{
+  "nav": {
+    "home": "Home",
+    "music": "Music",
+    "events": "Events",
+    "connect": "Connect"
+  },
+  "hero": {
+    "overtitle": "Sacred Devotional Music",
+    "title1": "KIRTAN",
+    "title2": "RASA",
+    "subtitle": "Where ancient mantra meets the modern heart",
+    "trackPlays": "350K plays · Listen on Spotify",
+    "btnMusic": "Explore Music",
+    "btnConnect": "Connect With Us"
+  },
+  "about": {
+    "label": "Our Story",
+    "title": "Devotion through sacred sound",
+    "quote": "Kirtan is not just music — it is a conversation with the Divine, a vibration that awakens what is already within. We gather to chant, to dissolve, to remember.",
+    "stat1Label": "Monthly Listeners",
+    "stat2Label": "Albums",
+    "stat3Label": "Top Track Plays",
+    "stat4Label": "Followers"
+  },
+  "music": {
+    "featuredLabel": "Featured",
+    "featuredTitle": "Latest Music",
+    "playsLabel": "plays",
+    "discographyLabel": "Discography",
+    "viewAll": "View All Albums →",
+    "topTracks": "Top Tracks",
+    "onSpotify": "On Spotify",
+    "pageTitle": "Music",
+    "albumLatest": "Album · Latest",
+    "album": "Album"
+  },
+  "events": {
+    "label": "Live",
+    "title": "Upcoming Events",
+    "subtitle": "Join us for live kirtan sessions, festivals, and sacred sound journeys.",
+    "allEvents": "All Events →",
+    "pastEvents": "Past Events",
+    "noPastEvents": "No past events to show yet.",
+    "freeEntry": "Free Entry",
+    "register": "Register",
+    "pageTitle": "Events",
+    "previewTitle": "Upcoming Events"
+  },
+  "connect": {
+    "label": "Find Us",
+    "title": "Connect",
+    "subtitle": "Join our community and stay connected with the latest releases and events.",
+    "spotifyDesc": "Stream our full discography. All albums, all tracks.",
+    "spotifyStatLabel": "Monthly Listeners",
+    "instagramDesc": "Behind the scenes and devotional moments.",
+    "instagramStatLabel": "Follow Us",
+    "facebookDesc": "Events, community and live announcements.",
+    "facebookStatLabel": "Like Our Page",
+    "quote": "Kirtan is not just music — it is a conversation with the Divine, a vibration that awakens what is already within.",
+    "quoteHighlight": "conversation with the Divine",
+    "quoteSource": "— Kirtan Rasa Music",
+    "pageTitle": "Connect"
+  },
+  "footer": {
+    "copyright": "© 2026 Kirtan Rasa Music",
+    "spotify": "Spotify",
+    "instagram": "Instagram",
+    "facebook": "Facebook"
+  }
+}

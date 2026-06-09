@@ -1,8 +1,15 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { usePathname } from 'next/navigation';
 import { ALBUMS, SOCIAL_LINKS } from '@/lib/data';
 
 export default function FeaturedMusicSection() {
+  const t = useTranslations('music');
+  const pathname = usePathname();
+  const locale = pathname.split('/')[1] || 'en';
   const previewAlbums = ALBUMS.slice(0, 3);
 
   return (
@@ -13,13 +20,13 @@ export default function FeaturedMusicSection() {
           className="font-josefin uppercase mb-3"
           style={{ fontSize: 9, letterSpacing: '0.5em', color: 'var(--saffron)' }}
         >
-          Featured
+          {t('featuredLabel')}
         </p>
         <h2
           className="font-philosopher font-bold mb-4"
           style={{ fontSize: 'clamp(28px, 4vw, 44px)', color: 'var(--text-dark)' }}
         >
-          Latest Music
+          {t('featuredTitle')}
         </h2>
         <div style={{ width: 48, height: 2, backgroundColor: 'var(--teal-light)', marginBottom: 40 }} />
 
@@ -53,7 +60,7 @@ export default function FeaturedMusicSection() {
               Songs of Devotion
             </div>
             <div className="font-philosopher mt-2" style={{ fontSize: 14, color: 'var(--teal-mid)' }}>
-              350,182 plays
+              350,182 {t('playsLabel')}
             </div>
           </div>
           <a
@@ -105,7 +112,7 @@ export default function FeaturedMusicSection() {
         {/* View All button */}
         <div className="mt-7">
           <Link
-            href="/music"
+            href={`/${locale}/music`}
             className="font-josefin font-light uppercase inline-block transition-all duration-200 hover:opacity-85"
             style={{
               backgroundColor: 'var(--teal-deep)',
@@ -116,7 +123,7 @@ export default function FeaturedMusicSection() {
               letterSpacing: '0.28em',
             }}
           >
-            View All Albums
+            {t('viewAll')}
           </Link>
         </div>
       </div>

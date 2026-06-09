@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import { Philosopher, Lora, Josefin_Sans } from 'next/font/google';
 import './globals.css';
-import Nav from '@/components/Nav';
-import Footer from '@/components/Footer';
 
 const philosopher = Philosopher({
   subsets: ['latin'],
@@ -25,7 +23,7 @@ const josefinSans = Josefin_Sans({
 
 export const metadata: Metadata = {
   title: 'Kirtan Rasa Music',
-  description: 'Sacred devotional kirtan music from the heart. Listen on Spotify.',
+  description: 'Sacred devotional kirtan music from the heart.',
 };
 
 export default function RootLayout({
@@ -35,16 +33,13 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
       className={`${philosopher.variable} ${lora.variable} ${josefinSans.variable}`}
     >
       <body
-        className="antialiased font-josefin"
+        className="antialiased"
         style={{ backgroundColor: 'var(--ivory)', color: 'var(--text-dark)' }}
       >
-        <Nav />
-        <main>{children}</main>
-        <Footer />
+        {children}
       </body>
     </html>
   );

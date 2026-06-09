@@ -2,9 +2,15 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { usePathname } from 'next/navigation';
 import { SOCIAL_LINKS } from '@/lib/data';
 
 export default function HeroSection() {
+  const t = useTranslations('hero');
+  const pathname = usePathname();
+  const locale = pathname.split('/')[1] || 'en';
+
   return (
     <section
       className="relative overflow-hidden"
@@ -36,13 +42,9 @@ export default function HeroSection() {
         {/* Overtitle */}
         <p
           className="font-josefin font-light uppercase mb-5"
-          style={{
-            fontSize: 10,
-            letterSpacing: '0.55em',
-            color: 'rgba(168,212,212,0.9)',
-          }}
+          style={{ fontSize: 10, letterSpacing: '0.55em', color: 'rgba(168,212,212,0.9)' }}
         >
-          Sacred Devotional Music
+          {t('overtitle')}
         </p>
 
         {/* H1 */}
@@ -55,9 +57,9 @@ export default function HeroSection() {
             textShadow: '0 4px 32px rgba(0,0,0,0.25)',
           }}
         >
-          KIRTAN
+          {t('title1')}
           <br />
-          <span style={{ color: 'var(--teal-light)' }}>RASA</span>
+          <span style={{ color: 'var(--teal-light)' }}>{t('title2')}</span>
         </h1>
 
         {/* Subtitle */}
@@ -69,7 +71,7 @@ export default function HeroSection() {
             textShadow: '0 1px 12px rgba(0,0,0,0.2)',
           }}
         >
-          Where ancient mantra meets the modern heart
+          {t('subtitle')}
         </p>
 
         {/* Divider */}
@@ -105,7 +107,7 @@ export default function HeroSection() {
               className="font-josefin"
               style={{ fontSize: 11, color: 'var(--text-dim)', letterSpacing: '0.05em' }}
             >
-              350K plays · Listen on Spotify
+              {t('trackPlays')}
             </div>
           </div>
           <div
@@ -119,7 +121,7 @@ export default function HeroSection() {
         {/* Buttons */}
         <div className="flex flex-wrap items-center justify-center gap-3">
           <Link
-            href="/music"
+            href={`/${locale}/music`}
             className="font-josefin font-light uppercase transition-all duration-200 hover:opacity-85"
             style={{
               backgroundColor: 'var(--teal-deep)',
@@ -130,10 +132,10 @@ export default function HeroSection() {
               letterSpacing: '0.28em',
             }}
           >
-            Explore Music
+            {t('btnMusic')}
           </Link>
           <Link
-            href="/connect"
+            href={`/${locale}/connect`}
             className="font-josefin font-light uppercase transition-all duration-200"
             style={{
               border: '1px solid rgba(255,255,255,0.6)',
@@ -150,7 +152,7 @@ export default function HeroSection() {
               (e.currentTarget as HTMLElement).style.backgroundColor = 'transparent';
             }}
           >
-            Connect With Us
+            {t('btnConnect')}
           </Link>
         </div>
       </div>

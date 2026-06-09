@@ -1,20 +1,25 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-
-const links = [
-  { href: '/', label: 'Home' },
-  { href: '/music', label: 'Music' },
-  { href: '/events', label: 'Events' },
-  { href: '/connect', label: 'Connect' },
-];
+import { useTranslations } from 'next-intl';
 
 export default function Nav() {
   const pathname = usePathname();
+  const router = useRouter();
+  const t = useTranslations('nav');
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const locale = pathname.split('/')[1] || 'en';
+
+  const links = [
+    { href: `/${locale}`, label: t('home') },
+    { href: `/${locale}/music`, label: t('music') },
+    { href: `/${locale}/events`, label: t('events') },
+    { href: `/${locale}/connect`, label: t('connect') },
+  ];
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY >= 60);
@@ -22,6 +27,12 @@ export default function Nav() {
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  function switchLocale() {
+    const newLocale = locale === 'en' ? 'bg' : 'en';
+    const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
+    router.push(newPath);
+  }
 
   return (
     <nav
@@ -37,7 +48,7 @@ export default function Nav() {
         className="flex items-center justify-between"
         style={{ padding: '16px 56px', alignItems: 'center' }}
       >
-        <Link href="/">
+        <Link href={`/${locale}`}>
           <img
             src="/images/logo.png"
             alt="Kirtan Rasa Music"
@@ -79,6 +90,29 @@ export default function Nav() {
               </Link>
             );
           })}
+
+          {/* Language switcher */}
+          <button
+            onClick={switchLocale}
+            style={{
+              fontFamily: 'var(--font-josefin)',
+              fontSize: '11px',
+              letterSpacing: '0.2em',
+              textTransform: 'uppercase',
+              padding: '6px 14px',
+              border: isScrolled
+                ? '1px solid rgba(13,110,110,0.4)'
+                : '1px solid rgba(255,255,255,0.5)',
+              borderRadius: '3px',
+              background: 'transparent',
+              color: isScrolled ? 'var(--teal-deep)' : 'white',
+              cursor: 'pointer',
+              marginLeft: '16px',
+              transition: 'all 0.2s',
+            }}
+          >
+            {locale === 'en' ? 'БГ' : 'EN'}
+          </button>
         </div>
 
         {/* Hamburger button */}
@@ -132,6 +166,22 @@ export default function Nav() {
               </Link>
             );
           })}
+          <button
+            onClick={() => { switchLocale(); setIsMenuOpen(false); }}
+            className="font-josefin uppercase"
+            style={{
+              fontSize: 12,
+              letterSpacing: '0.25em',
+              color: 'var(--teal-deep)',
+              padding: '16px 32px',
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              textAlign: 'left',
+            }}
+          >
+            {locale === 'en' ? 'Български' : 'English'}
+          </button>
         </div>
       )}
     </nav>

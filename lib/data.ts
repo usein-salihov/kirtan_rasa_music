@@ -14,10 +14,45 @@ export const TOP_TRACKS = [
   { rank: 5, title: 'Govinda Jaya Jaya', album: 'Govinda', plays: '13,645', gradient: 'from-[#0F1F3D] to-[#4A7BC8]' },
 ];
 
+export type EventTag = 'freeEntry' | 'register';
+
 export const EVENTS = [
-  { id: 1, day: '21', month: 'Jun', name: 'Summer Kirtan Festival', location: 'Sofia, Bulgaria · Borisova Gradina', tag: 'Free Entry', tagColor: 'teal' as const },
-  { id: 2, day: '05', month: 'Jul', name: 'Evening Mantra Session', location: 'Plovdiv, Bulgaria · Yoga Center', tag: 'Register', tagColor: 'saffron' as const },
-  { id: 3, day: '19', month: 'Jul', name: 'Sacred Sound Journey', location: 'Varna, Bulgaria · Beach Stage', tag: 'Free Entry', tagColor: 'teal' as const },
+  {
+    id: 1,
+    day: '21',
+    month: 'Jun',
+    monthBg: 'Юни',
+    name: 'Summer Kirtan Festival',
+    nameBg: 'Летен Киртан Фестивал',
+    location: 'Sofia, Bulgaria · Borisova Gradina',
+    locationBg: 'София, България · Борисова Градина',
+    tag: 'freeEntry' as EventTag,
+    tagColor: 'teal' as const,
+  },
+  {
+    id: 2,
+    day: '05',
+    month: 'Jul',
+    monthBg: 'Юли',
+    name: 'Evening Mantra Session',
+    nameBg: 'Вечерна Мантра Сесия',
+    location: 'Plovdiv, Bulgaria · Yoga Center',
+    locationBg: 'Пловдив, България · Йога Център',
+    tag: 'register' as EventTag,
+    tagColor: 'saffron' as const,
+  },
+  {
+    id: 3,
+    day: '19',
+    month: 'Jul',
+    monthBg: 'Юли',
+    name: 'Sacred Sound Journey',
+    nameBg: 'Пътешествие на Свещения Звук',
+    location: 'Varna, Bulgaria · Beach Stage',
+    locationBg: 'Варна, България · Плажна Сцена',
+    tag: 'freeEntry' as EventTag,
+    tagColor: 'teal' as const,
+  },
 ];
 
 export const SOCIAL_LINKS = {

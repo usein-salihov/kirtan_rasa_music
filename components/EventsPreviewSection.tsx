@@ -1,7 +1,16 @@
+'use client';
+
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { usePathname } from 'next/navigation';
 import { EVENTS } from '@/lib/data';
 
 export default function EventsPreviewSection() {
+  const t = useTranslations('events');
+  const pathname = usePathname();
+  const locale = pathname.split('/')[1] || 'en';
+  const isBg = locale === 'bg';
+
   return (
     <section className="px-6 py-16 md:px-20 md:py-20" style={{ backgroundColor: 'var(--forest)' }}>
       <div className="mx-auto" style={{ maxWidth: 1000 }}>
@@ -10,13 +19,13 @@ export default function EventsPreviewSection() {
           className="font-josefin uppercase mb-3"
           style={{ fontSize: 9, letterSpacing: '0.5em', color: 'var(--teal-light)' }}
         >
-          Live
+          {t('label')}
         </p>
         <h2
           className="font-philosopher font-bold mb-4"
           style={{ fontSize: 'clamp(28px, 4vw, 44px)', color: 'white' }}
         >
-          Upcoming Events
+          {t('previewTitle')}
         </h2>
         <div style={{ width: 48, height: 2, backgroundColor: 'var(--teal-light)', marginBottom: 32 }} />
 
@@ -43,7 +52,7 @@ export default function EventsPreviewSection() {
                   className="font-josefin uppercase mt-0.5"
                   style={{ fontSize: 10, letterSpacing: '0.3em', color: 'rgba(168,212,212,0.6)' }}
                 >
-                  {event.month}
+                  {isBg ? event.monthBg : event.month}
                 </div>
               </div>
 
@@ -52,14 +61,17 @@ export default function EventsPreviewSection() {
 
               {/* Info */}
               <div className="flex-1">
-                <div className="font-lora mb-1" style={{ fontSize: 'clamp(15px, 4vw, 18px)', color: 'white' }}>
-                  {event.name}
+                <div
+                  className="font-lora mb-1"
+                  style={{ fontSize: 'clamp(15px, 4vw, 18px)', color: 'white' }}
+                >
+                  {isBg ? event.nameBg : event.name}
                 </div>
                 <div
                   className="font-josefin"
                   style={{ fontSize: 12, color: 'rgba(168,212,212,0.7)', letterSpacing: '0.05em' }}
                 >
-                  {event.location}
+                  {isBg ? event.locationBg : event.location}
                 </div>
               </div>
 
@@ -75,7 +87,7 @@ export default function EventsPreviewSection() {
                   borderRadius: 999,
                 }}
               >
-                {event.tag}
+                {t(event.tag)}
               </div>
             </div>
           ))}
@@ -84,7 +96,7 @@ export default function EventsPreviewSection() {
         {/* All Events link */}
         <div className="mt-8">
           <Link
-            href="/events"
+            href={`/${locale}/events`}
             className="font-josefin font-light uppercase inline-block transition-all duration-200 hover:opacity-80"
             style={{
               color: 'var(--teal-light)',
@@ -95,7 +107,7 @@ export default function EventsPreviewSection() {
               letterSpacing: '0.28em',
             }}
           >
-            All Events
+            {t('allEvents')}
           </Link>
         </div>
       </div>
