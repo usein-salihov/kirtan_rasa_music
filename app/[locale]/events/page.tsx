@@ -23,7 +23,7 @@ export default async function EventsPage({
       <div
         className="relative overflow-hidden"
         style={{
-          height: 280,
+          minHeight: 300,
           background: 'linear-gradient(135deg, #1a2820, #0D2020)',
         }}
       >
@@ -37,7 +37,7 @@ export default async function EventsPage({
         />
 
         {/* Content */}
-        <div className="relative z-10 px-6 md:px-20 flex flex-col justify-center h-full pt-24">
+        <div className="relative z-10 px-6 md:px-20 flex flex-col justify-center h-full pt-32">
           {/* Saffron pill */}
           <div
             className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full"
@@ -171,12 +171,34 @@ export default async function EventsPage({
           >
             {t('pastEvents')}
           </h2>
-          <p
-            className="font-lora italic"
-            style={{ fontSize: 16, color: 'var(--text-dim)' }}
+          <div
+            style={{
+              padding: 40,
+              textAlign: 'center',
+              border: '1px dashed rgba(13,110,110,0.15)',
+              borderRadius: 8,
+              marginTop: 16,
+            }}
           >
-            {t('noPastEvents')}
-          </p>
+            <p
+              className="font-philosopher"
+              style={{ fontSize: 18, color: 'var(--text-dim)', fontStyle: 'italic' }}
+            >
+              {t('noPastEvents')}
+            </p>
+            <p
+              className="font-josefin uppercase"
+              style={{
+                fontSize: 10,
+                letterSpacing: '0.3em',
+                color: 'var(--text-dim)',
+                marginTop: 8,
+                opacity: 0.6,
+              }}
+            >
+              Check back soon
+            </p>
+          </div>
         </div>
       </div>
     </>

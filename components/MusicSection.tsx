@@ -41,26 +41,9 @@ export default function MusicSection() {
         ))}
       </div>
 
-      <div className="px-6 pt-16">
+      <div className="px-6 md:px-20 pt-10">
         {/* Albums section */}
         <div className="max-w-[1100px] mx-auto mb-24">
-          <p
-            className="font-josefin uppercase text-center mb-3"
-            style={{ fontSize: 9, letterSpacing: '0.5em', color: 'var(--saffron)' }}
-          >
-            {tMusic('discographyLabel')}
-          </p>
-          <h2
-            className="font-philosopher font-bold text-center mb-4"
-            style={{ color: 'var(--text-dark)', fontSize: 'clamp(32px, 5vw, 52px)' }}
-          >
-            {tMusic('pageTitle')}
-          </h2>
-          <div
-            className="mx-auto mb-12"
-            style={{ width: 60, height: 1, backgroundColor: 'var(--teal-light)' }}
-          />
-
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
             {ALBUMS.map((album) => (
               <a

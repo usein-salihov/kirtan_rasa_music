@@ -27,7 +27,7 @@ export default async function MusicPage({
       <div
         className="relative overflow-hidden"
         style={{
-          height: 280,
+          minHeight: 300,
           background: 'linear-gradient(135deg, #2A3A35 0%, #1a2820 60%, #0D2020 100%)',
         }}
       >
@@ -41,7 +41,7 @@ export default async function MusicPage({
         />
 
         {/* Content */}
-        <div className="relative z-10 px-6 md:px-20 flex flex-col justify-center h-full pt-24">
+        <div className="relative z-10 px-6 md:px-20 flex flex-col justify-center h-full pt-32">
           {/* Teal pill */}
           <div
             className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full"
@@ -94,12 +94,14 @@ export default async function MusicPage({
           {albumCircles.map((album, i) => (
             <div
               key={album.src}
-              className="relative rounded-full overflow-hidden flex-shrink-0"
+              className="relative overflow-hidden flex-shrink-0"
               style={{
-                width: 120,
-                height: 120,
+                width: 110,
+                height: 110,
+                borderRadius: '50%',
                 opacity: 0.7,
-                marginLeft: i > 0 ? -40 : 0,
+                border: '2px solid rgba(255,255,255,0.15)',
+                marginLeft: i > 0 ? -24 : 0,
                 zIndex: i,
               }}
             >

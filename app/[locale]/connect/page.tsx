@@ -20,7 +20,7 @@ export default async function ConnectPage({
       <div
         className="relative overflow-hidden"
         style={{
-          height: 280,
+          minHeight: 300,
           background: 'linear-gradient(135deg, #1E3535, #0D2B2B)',
         }}
       >
@@ -34,7 +34,7 @@ export default async function ConnectPage({
         />
 
         {/* Content */}
-        <div className="relative z-10 px-6 md:px-20 flex flex-col justify-center h-full pt-24">
+        <div className="relative z-10 px-6 md:px-20 flex flex-col justify-center h-full pt-32">
           {/* Teal pill */}
           <div
             className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full"

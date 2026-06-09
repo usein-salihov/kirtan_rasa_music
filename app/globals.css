@@ -57,3 +57,11 @@ body { background: var(--ivory); color: var(--text-dark); }
 .track-row:hover {
   background-color: rgba(13, 110, 110, 0.04) !important;
 }
+
+@keyframes nowPlayingPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.85); }
+}
+.now-playing-dot {
+  animation: nowPlayingPulse 2s infinite;
+}

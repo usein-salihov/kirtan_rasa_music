@@ -14,7 +14,7 @@ export default function HeroSection() {
   return (
     <section
       className="relative overflow-hidden"
-      style={{ height: '100vh', minHeight: 600 }}
+      style={{ height: '100vh', minHeight: 600, marginTop: 0, paddingTop: 0, width: '100%' }}
     >
       {/* Layer 1 — photo */}
       <Image
@@ -154,13 +154,11 @@ export default function HeroSection() {
           rel="noopener noreferrer"
           style={{ textDecoration: 'none' }}
         >
-          <div
-            className="font-josefin uppercase mb-1.5"
-            style={{ fontSize: 9, letterSpacing: '0.35em', color: 'rgba(168,212,212,0.7)' }}
-          >
-            Now Playing
-          </div>
           <div className="flex items-center gap-3">
+            <div
+              className="now-playing-dot rounded-full flex-shrink-0"
+              style={{ width: 8, height: 8, backgroundColor: '#1DB954' }}
+            />
             <div
               className="relative rounded-lg overflow-hidden flex-shrink-0"
               style={{ width: 48, height: 48 }}
@@ -173,16 +171,8 @@ export default function HeroSection() {
                 sizes="48px"
               />
             </div>
-            <div>
-              <div className="font-lora" style={{ fontSize: 15, color: 'white' }}>
-                Govinda
-              </div>
-              <div
-                className="font-josefin mt-0.5"
-                style={{ fontSize: 11, color: 'rgba(168,212,212,0.7)' }}
-              >
-                Govinda · Kirtan Rasa
-              </div>
+            <div className="font-lora" style={{ fontSize: 14, color: 'white' }}>
+              Govinda · Govinda Album
             </div>
             <div
               className="flex items-center justify-center rounded-full flex-shrink-0 text-white"
