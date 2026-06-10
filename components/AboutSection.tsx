@@ -15,12 +15,7 @@ export default async function AboutSection() {
         borderBottom: '1px solid rgba(13,110,110,0.06)',
       }}
     >
-      <div
-        className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center"
-        style={{ maxWidth: 1000 }}
-      >
-        {/* Left column */}
-        <div>
+      <div className="max-w-2xl mx-auto text-center">
           <p
             style={{
               fontFamily: 'var(--font-josefin)',
@@ -44,7 +39,7 @@ export default async function AboutSection() {
           >
             {t('title')}
           </h2>
-          <div style={{ width: 40, height: 1, backgroundColor: 'var(--teal-light)', marginBottom: 28 }} />
+          <div className="mx-auto" style={{ width: 40, height: 1, backgroundColor: 'var(--teal-light)', marginBottom: 28 }} />
           <p
             style={{
               fontFamily: 'var(--font-lora)',
@@ -56,46 +51,6 @@ export default async function AboutSection() {
           >
             {t('quote')}
           </p>
-        </div>
-
-        {/* Right column — 2×2 stats */}
-        <div className="grid grid-cols-2 gap-3">
-          {STATS.map((stat, i) => (
-            <div
-              key={stat.label}
-              className="stat-box rounded-md text-center"
-              style={{
-                backgroundColor: 'white',
-                border: '1px solid rgba(13,110,110,0.08)',
-                padding: 24,
-              }}
-            >
-              <div
-                data-target={STAT_TARGETS[i]}
-                style={{
-                  fontFamily: 'var(--font-philosopher)',
-                  fontSize: 36,
-                  color: 'var(--teal)',
-                  lineHeight: 1,
-                }}
-              >
-                {stat.num}
-              </div>
-              <div
-                style={{
-                  fontFamily: 'var(--font-josefin)',
-                  fontSize: 9,
-                  letterSpacing: '0.3em',
-                  textTransform: 'uppercase',
-                  color: 'var(--dim)',
-                  marginTop: 6,
-                }}
-              >
-                {t(STAT_KEYS[i])}
-              </div>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   );
