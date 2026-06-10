@@ -47,7 +47,7 @@ export default function FeaturedMusicSection() {
       </div>
 
       {/* Albums grid */}
-      <div className="grid grid-cols-3 gap-5 mt-10">
+      <div className="grid grid-cols-3 gap-5 mt-10 max-w-2xl">
         {featuredAlbums.map((album) => (
           <div
             key={album.id}
