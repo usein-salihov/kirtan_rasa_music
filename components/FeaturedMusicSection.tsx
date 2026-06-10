@@ -15,13 +15,13 @@ export default function FeaturedMusicSection() {
 
   return (
     <section
-      className="reveal px-6 py-14 md:px-20 md:py-20"
+      className="reveal px-6 md:px-20 py-20"
       style={{
         backgroundColor: 'var(--warm)',
         borderBottom: '1px solid rgba(13,110,110,0.06)',
       }}
     >
-      <div className="max-w-3xl mx-auto">
+      <div>
         {/* Section header */}
         <p
           style={{
