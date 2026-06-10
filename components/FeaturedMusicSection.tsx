@@ -15,47 +15,51 @@ export default function FeaturedMusicSection() {
 
   return (
     <section
-      className="reveal px-6 md:px-20 py-20"
-      style={{
-        backgroundColor: 'var(--warm)',
-        borderBottom: '1px solid rgba(13,110,110,0.06)',
-      }}
+      className="reveal px-6 md:px-20 py-16"
+      style={{ backgroundColor: 'var(--warm)' }}
     >
-      <div>
-        {/* Section header */}
-        <p
-          style={{
-            fontFamily: 'var(--font-josefin)',
-            fontSize: 9,
-            letterSpacing: '0.5em',
-            textTransform: 'uppercase',
-            color: 'var(--saffron)',
-            marginBottom: 12,
-          }}
-        >
-          {t('featuredLabel')}
-        </p>
-        <h2
-          style={{
-            fontFamily: 'var(--font-philosopher)',
-            fontSize: 'clamp(28px, 4vw, 44px)',
-            color: 'var(--dark)',
-            lineHeight: 1.1,
-            marginBottom: 16,
-          }}
-        >
-          {t('featuredTitle')}
-        </h2>
-        <div style={{ width: 40, height: 1, backgroundColor: 'var(--teal-light)', marginBottom: 40 }} />
+      <div style={{ maxWidth: '56rem' }}>
+        {/* 1. Section header */}
+        <div style={{ marginBottom: 32 }}>
+          <p
+            style={{
+              fontFamily: 'var(--font-josefin)',
+              fontSize: 9,
+              letterSpacing: '0.5em',
+              textTransform: 'uppercase',
+              color: 'var(--saffron)',
+              marginBottom: 12,
+            }}
+          >
+            FEATURED
+          </p>
+          <h2
+            style={{
+              fontFamily: 'var(--font-philosopher)',
+              fontSize: 'clamp(28px, 3.5vw, 42px)',
+              color: 'var(--dark)',
+              lineHeight: 1.1,
+              marginBottom: 16,
+            }}
+          >
+            {t('featuredTitle')}
+          </h2>
+          <div style={{ width: 40, height: 1, backgroundColor: 'var(--teal-light)' }} />
+        </div>
 
-        {/* Featured track card */}
+        {/* 2. Featured track card */}
         <div
-          className="w-full flex items-center gap-5 transition-all duration-200"
+          className="transition-all duration-200"
           style={{
+            maxWidth: 560,
             backgroundColor: 'white',
             border: '1px solid rgba(13,110,110,0.08)',
             borderRadius: 8,
-            padding: 24,
+            padding: '20px 24px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 16,
+            marginBottom: 32,
             cursor: 'pointer',
           }}
           onMouseEnter={(e) => {
@@ -69,29 +73,21 @@ export default function FeaturedMusicSection() {
             el.style.borderColor = 'rgba(13,110,110,0.08)';
           }}
         >
-          {/* Album art */}
           <div
             className="relative rounded-md overflow-hidden flex-shrink-0"
-            style={{ width: 64, height: 64 }}
+            style={{ width: 56, height: 56 }}
           >
             <Image
               src="/images/albums/govinda.png"
               alt="Govinda"
               fill
               className="object-cover"
-              sizes="64px"
+              sizes="56px"
             />
           </div>
 
-          {/* Track info */}
           <div style={{ flex: 1, minWidth: 0 }}>
-            <div
-              style={{
-                fontFamily: 'var(--font-philosopher)',
-                fontSize: 20,
-                color: 'var(--dark)',
-              }}
-            >
+            <div style={{ fontFamily: 'var(--font-philosopher)', fontSize: 18, color: 'var(--dark)' }}>
               Govinda
             </div>
             <div
@@ -99,7 +95,6 @@ export default function FeaturedMusicSection() {
                 fontFamily: 'var(--font-josefin)',
                 fontSize: 11,
                 color: 'var(--dim)',
-                letterSpacing: '0.08em',
                 marginTop: 4,
               }}
             >
@@ -107,37 +102,32 @@ export default function FeaturedMusicSection() {
             </div>
           </div>
 
-          {/* Play button */}
           <button
             onClick={() => window.open(SOCIAL_LINKS.spotify, '_blank')}
             className="flex items-center justify-center flex-shrink-0 transition-all duration-200"
             style={{
-              width: 44,
-              height: 44,
+              width: 40,
+              height: 40,
               borderRadius: '50%',
               backgroundColor: '#1DB954',
               border: 'none',
               cursor: 'pointer',
             }}
             onMouseEnter={(e) => {
-              const el = e.currentTarget as HTMLElement;
-              el.style.transform = 'scale(1.08)';
-              el.style.boxShadow = '0 4px 16px rgba(29,185,84,0.4)';
+              (e.currentTarget as HTMLElement).style.transform = 'scale(1.08)';
             }}
             onMouseLeave={(e) => {
-              const el = e.currentTarget as HTMLElement;
-              el.style.transform = 'scale(1)';
-              el.style.boxShadow = 'none';
+              (e.currentTarget as HTMLElement).style.transform = 'scale(1)';
             }}
             aria-label="Play on Spotify"
           >
-            <svg width="14" height="16" viewBox="0 0 14 16" fill="white">
-              <path d="M2 1L13 8L2 15V1Z" />
+            <svg width="12" height="14" viewBox="0 0 12 14" fill="white">
+              <path d="M1 1L11 7L1 13V1Z" />
             </svg>
           </button>
         </div>
 
-        {/* Latest Albums label */}
+        {/* 3. Discography label */}
         <p
           style={{
             fontFamily: 'var(--font-josefin)',
@@ -145,38 +135,47 @@ export default function FeaturedMusicSection() {
             letterSpacing: '0.5em',
             textTransform: 'uppercase',
             color: 'var(--saffron)',
-            marginTop: 40,
-            marginBottom: 16,
+            marginBottom: 12,
           }}
         >
           {t('discographyLabel')}
         </p>
 
-        {/* 3-column album grid */}
-        <div className="grid grid-cols-3 gap-5 mt-4">
+        {/* 4. Album grid */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: 16,
+            maxWidth: 560,
+          }}
+        >
           {miniAlbums.map((album) => (
             <div
               key={album.id}
-              className="rounded-md overflow-hidden cursor-pointer transition-all duration-200"
+              className="transition-all duration-200"
               style={{
                 backgroundColor: 'white',
                 border: '1px solid rgba(13,110,110,0.07)',
+                borderRadius: 6,
+                overflow: 'hidden',
+                cursor: 'pointer',
               }}
               onClick={() => window.open(album.spotifyUrl, '_blank')}
               onMouseEnter={(e) => {
                 const el = e.currentTarget as HTMLElement;
-                el.style.border = '1px solid rgba(13,110,110,0.25)';
                 el.style.transform = 'translateY(-3px)';
                 el.style.boxShadow = '0 4px 16px rgba(13,110,110,0.12)';
+                el.style.borderColor = 'rgba(13,110,110,0.2)';
               }}
               onMouseLeave={(e) => {
                 const el = e.currentTarget as HTMLElement;
-                el.style.border = '1px solid rgba(13,110,110,0.07)';
                 el.style.transform = 'translateY(0)';
                 el.style.boxShadow = 'none';
+                el.style.borderColor = 'rgba(13,110,110,0.07)';
               }}
             >
-              <div className="relative w-full" style={{ paddingTop: '100%' }}>
+              <div className="relative w-full overflow-hidden" style={{ paddingTop: '100%' }}>
                 <Image
                   src={album.image}
                   alt={album.title}
@@ -185,14 +184,8 @@ export default function FeaturedMusicSection() {
                   sizes="200px"
                 />
               </div>
-              <div style={{ padding: 12 }}>
-                <div
-                  style={{
-                    fontFamily: 'var(--font-lora)',
-                    fontSize: 13,
-                    color: 'var(--dark)',
-                  }}
-                >
+              <div style={{ padding: '10px 12px' }}>
+                <div style={{ fontFamily: 'var(--font-lora)', fontSize: 13, color: 'var(--dark)' }}>
                   {album.title}
                 </div>
                 <div
@@ -200,7 +193,6 @@ export default function FeaturedMusicSection() {
                     fontFamily: 'var(--font-josefin)',
                     fontSize: 10,
                     color: 'var(--dim)',
-                    letterSpacing: '0.08em',
                     marginTop: 2,
                   }}
                 >
@@ -211,7 +203,7 @@ export default function FeaturedMusicSection() {
           ))}
         </div>
 
-        {/* View Full Discography link */}
+        {/* 5. View link */}
         <Link
           href={`/${locale}/music`}
           className="inline-flex items-center gap-2 group transition-all duration-200"
@@ -222,7 +214,8 @@ export default function FeaturedMusicSection() {
             textTransform: 'uppercase',
             color: 'var(--teal)',
             textDecoration: 'none',
-            marginTop: 24,
+            marginTop: 20,
+            display: 'inline-flex',
           }}
         >
           <span>{t('viewAll')}</span>
