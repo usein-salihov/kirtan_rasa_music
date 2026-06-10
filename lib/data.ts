@@ -28,7 +28,7 @@ export const EVENTS = [
     locationBg: 'Варна, България · хотел Черно море',
     tag: 'freeEntry' as EventTag,
     tagColor: 'teal' as const,
-    link: ''
+    link: 'https://www.facebook.com/photo/?fbid=122175212936903705&set=a.122126483462903705'
   }
 ];
 

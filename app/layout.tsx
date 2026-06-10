@@ -24,6 +24,9 @@ const josefinSans = Josefin_Sans({
 export const metadata: Metadata = {
   title: 'Kirtan Rasa Music',
   description: 'Sacred devotional kirtan music from the heart.',
+  icons: {
+    icon: '/icon.svg',
+  },
 };
 
 export default function RootLayout({
