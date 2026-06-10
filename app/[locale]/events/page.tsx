@@ -65,104 +65,111 @@ export default async function EventsPage({
       <div className="max-w-3xl mx-auto px-6 md:px-0">
       <div className="py-12">
         <div className="flex flex-col" style={{ gap: 2 }}>
-          {EVENTS.map((event) => (
-            <div
-              key={event.id}
-              className="flex items-center gap-8 rounded-sm"
-              style={{
-                padding: '24px 32px',
-                backgroundColor: 'white',
-                border: '1px solid rgba(13,110,110,0.08)',
-                borderRadius: 8,
-                marginBottom: 8,
-              }}
-            >
-              {/* Date */}
-              <div className="text-center" style={{ minWidth: 52 }}>
-                <div
-                  style={{
-                    fontFamily: 'var(--font-philosopher)',
-                    fontSize: 'clamp(24px, 5vw, 36px)',
-                    color: 'var(--teal)',
-                    lineHeight: 1,
-                  }}
-                >
-                  {event.day}
+          {EVENTS.map((event) => {
+            const row = (
+              <div
+                key={event.id}
+                className="flex items-center gap-8 rounded-sm"
+                style={{
+                  padding: '24px 32px',
+                  backgroundColor: 'white',
+                  border: '1px solid rgba(13,110,110,0.08)',
+                  borderRadius: 8,
+                  marginBottom: 8,
+                }}
+              >
+                {/* Date */}
+                <div className="text-center" style={{ minWidth: 52 }}>
+                  <div
+                    style={{
+                      fontFamily: 'var(--font-philosopher)',
+                      fontSize: 'clamp(24px, 5vw, 36px)',
+                      color: 'var(--teal)',
+                      lineHeight: 1,
+                    }}
+                  >
+                    {event.day}
+                  </div>
+                  <div
+                    style={{
+                      fontFamily: 'var(--font-josefin)',
+                      fontSize: 10,
+                      letterSpacing: '0.3em',
+                      textTransform: 'uppercase',
+                      color: 'var(--dim)',
+                      marginTop: 4,
+                    }}
+                  >
+                    {isBg ? event.monthBg : event.month}
+                  </div>
                 </div>
+
+                {/* Divider */}
+                <div
+                  className="hidden md:block"
+                  style={{ width: 1, height: 52, backgroundColor: 'rgba(13,110,110,0.1)', flexShrink: 0 }}
+                />
+
+                {/* Info */}
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div
+                    style={{
+                      fontFamily: 'var(--font-philosopher)',
+                      fontSize: 20,
+                      color: 'var(--dark)',
+                      marginBottom: 4,
+                    }}
+                  >
+                    {isBg ? event.nameBg : event.name}
+                  </div>
+                  <div
+                    style={{
+                      fontFamily: 'var(--font-josefin)',
+                      fontSize: 12,
+                      color: 'var(--dim)',
+                      letterSpacing: '0.05em',
+                    }}
+                  >
+                    {isBg ? event.locationBg : event.location}
+                  </div>
+                </div>
+
+                {/* Tag */}
                 <div
                   style={{
                     fontFamily: 'var(--font-josefin)',
                     fontSize: 10,
-                    letterSpacing: '0.3em',
+                    letterSpacing: '0.2em',
                     textTransform: 'uppercase',
-                    color: 'var(--dim)',
-                    marginTop: 4,
+                    color: event.tagColor === 'teal' ? 'var(--teal)' : 'var(--saffron)',
+                    border: `1px solid ${event.tagColor === 'teal' ? 'rgba(13,110,110,0.3)' : 'rgba(196,129,58,0.3)'}`,
+                    borderRadius: 999,
+                    padding: '6px 14px',
+                    flexShrink: 0,
                   }}
                 >
-                  {isBg ? event.monthBg : event.month}
+                  {t(event.tag)}
                 </div>
-              </div>
 
-              {/* Divider */}
-              <div
-                className="hidden md:block"
-                style={{ width: 1, height: 52, backgroundColor: 'rgba(13,110,110,0.1)', flexShrink: 0 }}
-              />
-
-              {/* Info */}
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <div
+                {/* Arrow */}
+                <span
                   style={{
-                    fontFamily: 'var(--font-philosopher)',
-                    fontSize: 20,
-                    color: 'var(--dark)',
-                    marginBottom: 4,
+                    fontSize: 14,
+                    color: 'var(--teal)',
+                    opacity: 0.4,
+                    flexShrink: 0,
                   }}
                 >
-                  {isBg ? event.nameBg : event.name}
-                </div>
-                <div
-                  style={{
-                    fontFamily: 'var(--font-josefin)',
-                    fontSize: 12,
-                    color: 'var(--dim)',
-                    letterSpacing: '0.05em',
-                  }}
-                >
-                  {isBg ? event.locationBg : event.location}
-                </div>
+                  →
+                </span>
               </div>
-
-              {/* Tag */}
-              <div
-                style={{
-                  fontFamily: 'var(--font-josefin)',
-                  fontSize: 10,
-                  letterSpacing: '0.2em',
-                  textTransform: 'uppercase',
-                  color: event.tagColor === 'teal' ? 'var(--teal)' : 'var(--saffron)',
-                  border: `1px solid ${event.tagColor === 'teal' ? 'rgba(13,110,110,0.3)' : 'rgba(196,129,58,0.3)'}`,
-                  borderRadius: 999,
-                  padding: '6px 14px',
-                  flexShrink: 0,
-                }}
-              >
-                {t(event.tag)}
-              </div>
-
-              {/* Arrow */}
-              <span
-                style={{
-                  fontSize: 14,
-                  color: 'var(--teal)',
-                  opacity: 0.4,
-                  flexShrink: 0,
-                }}
-              >
-                →
-              </span>
-            </div>
-          ))}
+            );
+            return event.link ? (
+              <a key={event.id} href={event.link} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', display: 'block' }}>
+                {row}
+              </a>
+            ) : row;
+          })}
         </div>
       </div>
 

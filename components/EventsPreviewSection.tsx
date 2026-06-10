@@ -51,123 +51,130 @@ export default function EventsPreviewSection() {
 
         {/* Event rows */}
         <div className="flex flex-col mt-2" style={{ gap: 2 }}>
-          {EVENTS.map((event) => (
-            <div
-              key={event.id}
-              className="flex items-center gap-8 rounded-sm cursor-pointer transition-all duration-200"
-              style={{
-                padding: '20px 28px',
-                backgroundColor: 'rgba(255,255,255,0.03)',
-                borderLeft: '2px solid transparent',
-              }}
-              onMouseEnter={(e) => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.backgroundColor = 'rgba(168,212,212,0.06)';
-                el.style.borderLeftColor = 'var(--teal-light)';
-                el.style.paddingLeft = '36px';
-                const arrow = el.querySelector('[data-arrow]') as HTMLElement;
-                if (arrow) {
-                  arrow.style.color = 'var(--teal-light)';
-                  arrow.style.transform = 'translateX(4px)';
-                }
-              }}
-              onMouseLeave={(e) => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.backgroundColor = 'rgba(255,255,255,0.03)';
-                el.style.borderLeftColor = 'transparent';
-                el.style.paddingLeft = '28px';
-                const arrow = el.querySelector('[data-arrow]') as HTMLElement;
-                if (arrow) {
-                  arrow.style.color = 'rgba(168,212,212,0.25)';
-                  arrow.style.transform = 'translateX(0)';
-                }
-              }}
-            >
-              {/* Date */}
-              <div className="text-center" style={{ minWidth: 52 }}>
-                <div
-                  style={{
-                    fontFamily: 'var(--font-philosopher)',
-                    fontSize: 28,
-                    color: 'var(--teal-light)',
-                    lineHeight: 1,
-                  }}
-                >
-                  {event.day}
+          {EVENTS.map((event) => {
+            const row = (
+              <div
+                key={event.id}
+                className="flex items-center gap-8 rounded-sm cursor-pointer transition-all duration-200"
+                style={{
+                  padding: '20px 28px',
+                  backgroundColor: 'rgba(255,255,255,0.03)',
+                  borderLeft: '2px solid transparent',
+                }}
+                onMouseEnter={(e) => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.backgroundColor = 'rgba(168,212,212,0.06)';
+                  el.style.borderLeftColor = 'var(--teal-light)';
+                  el.style.paddingLeft = '36px';
+                  const arrow = el.querySelector('[data-arrow]') as HTMLElement;
+                  if (arrow) {
+                    arrow.style.color = 'var(--teal-light)';
+                    arrow.style.transform = 'translateX(4px)';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.backgroundColor = 'rgba(255,255,255,0.03)';
+                  el.style.borderLeftColor = 'transparent';
+                  el.style.paddingLeft = '28px';
+                  const arrow = el.querySelector('[data-arrow]') as HTMLElement;
+                  if (arrow) {
+                    arrow.style.color = 'rgba(168,212,212,0.25)';
+                    arrow.style.transform = 'translateX(0)';
+                  }
+                }}
+              >
+                {/* Date */}
+                <div className="text-center" style={{ minWidth: 52 }}>
+                  <div
+                    style={{
+                      fontFamily: 'var(--font-philosopher)',
+                      fontSize: 28,
+                      color: 'var(--teal-light)',
+                      lineHeight: 1,
+                    }}
+                  >
+                    {event.day}
+                  </div>
+                  <div
+                    style={{
+                      fontFamily: 'var(--font-josefin)',
+                      fontSize: 9,
+                      letterSpacing: '0.3em',
+                      textTransform: 'uppercase',
+                      color: 'rgba(168,212,212,0.5)',
+                      marginTop: 2,
+                    }}
+                  >
+                    {isBg ? event.monthBg : event.month}
+                  </div>
                 </div>
+
+                {/* Separator */}
+                <div style={{ width: 1, height: 40, backgroundColor: 'rgba(168,212,212,0.1)', flexShrink: 0 }} />
+
+                {/* Info */}
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div
+                    style={{
+                      fontFamily: 'var(--font-philosopher)',
+                      fontSize: 18,
+                      color: 'white',
+                      marginBottom: 2,
+                    }}
+                  >
+                    {isBg ? event.nameBg : event.name}
+                  </div>
+                  <div
+                    style={{
+                      fontFamily: 'var(--font-josefin)',
+                      fontSize: 11,
+                      color: 'rgba(168,212,212,0.6)',
+                      letterSpacing: '0.04em',
+                    }}
+                  >
+                    {isBg ? event.locationBg : event.location}
+                  </div>
+                </div>
+
+                {/* Tag */}
                 <div
                   style={{
                     fontFamily: 'var(--font-josefin)',
                     fontSize: 9,
-                    letterSpacing: '0.3em',
+                    letterSpacing: '0.2em',
                     textTransform: 'uppercase',
-                    color: 'rgba(168,212,212,0.5)',
-                    marginTop: 2,
+                    color: 'var(--teal-light)',
+                    border: '1px solid rgba(168,212,212,0.2)',
+                    borderRadius: 999,
+                    padding: '4px 14px',
+                    flexShrink: 0,
                   }}
                 >
-                  {isBg ? event.monthBg : event.month}
+                  {t(event.tag)}
                 </div>
-              </div>
 
-              {/* Separator */}
-              <div style={{ width: 1, height: 40, backgroundColor: 'rgba(168,212,212,0.1)', flexShrink: 0 }} />
-
-              {/* Info */}
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <div
+                {/* Arrow */}
+                <span
+                  data-arrow="true"
                   style={{
-                    fontFamily: 'var(--font-philosopher)',
-                    fontSize: 18,
-                    color: 'white',
-                    marginBottom: 2,
+                    fontSize: 14,
+                    color: 'rgba(168,212,212,0.25)',
+                    marginLeft: 4,
+                    flexShrink: 0,
+                    transition: 'color 0.2s, transform 0.2s',
                   }}
                 >
-                  {isBg ? event.nameBg : event.name}
-                </div>
-                <div
-                  style={{
-                    fontFamily: 'var(--font-josefin)',
-                    fontSize: 11,
-                    color: 'rgba(168,212,212,0.6)',
-                    letterSpacing: '0.04em',
-                  }}
-                >
-                  {isBg ? event.locationBg : event.location}
-                </div>
+                  →
+                </span>
               </div>
-
-              {/* Tag */}
-              <div
-                style={{
-                  fontFamily: 'var(--font-josefin)',
-                  fontSize: 9,
-                  letterSpacing: '0.2em',
-                  textTransform: 'uppercase',
-                  color: 'var(--teal-light)',
-                  border: '1px solid rgba(168,212,212,0.2)',
-                  borderRadius: 999,
-                  padding: '4px 14px',
-                  flexShrink: 0,
-                }}
-              >
-                {t(event.tag)}
-              </div>
-
-              {/* Arrow */}
-              <span
-                data-arrow="true"
-                style={{
-                  fontSize: 14,
-                  color: 'rgba(168,212,212,0.25)',
-                  marginLeft: 4,
-                  flexShrink: 0,
-                  transition: 'color 0.2s, transform 0.2s',
-                }}
-              >
-                →
-              </span>
-            </div>
-          ))}
+            );
+            return event.link ? (
+              <a key={event.id} href={event.link} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', display: 'block' }}>
+                {row}
+              </a>
+            ) : row;
+          })}
         </div>
 
         {/* All events button */}

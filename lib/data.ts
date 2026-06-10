@@ -22,37 +22,14 @@ export const EVENTS = [
     day: '21',
     month: 'Jun',
     monthBg: 'Юни',
-    name: 'Summer Kirtan Festival',
-    nameBg: 'Летен Киртан Фестивал',
-    location: 'Sofia, Bulgaria · Borisova Gradina',
-    locationBg: 'София, България · Борисова Градина',
+    name: 'Day of yoga in Varna',
+    nameBg: 'Ден на йогата Варна',
+    location: 'Varna, Bulgaria · hotel Black sea',
+    locationBg: 'Варна, България · хотел Черно море',
     tag: 'freeEntry' as EventTag,
     tagColor: 'teal' as const,
-  },
-  {
-    id: 2,
-    day: '05',
-    month: 'Jul',
-    monthBg: 'Юли',
-    name: 'Evening Mantra Session',
-    nameBg: 'Вечерна Мантра Сесия',
-    location: 'Plovdiv, Bulgaria · Yoga Center',
-    locationBg: 'Пловдив, България · Йога Център',
-    tag: 'register' as EventTag,
-    tagColor: 'saffron' as const,
-  },
-  {
-    id: 3,
-    day: '19',
-    month: 'Jul',
-    monthBg: 'Юли',
-    name: 'Sacred Sound Journey',
-    nameBg: 'Пътешествие на Свещения Звук',
-    location: 'Varna, Bulgaria · Beach Stage',
-    locationBg: 'Варна, България · Плажна Сцена',
-    tag: 'freeEntry' as EventTag,
-    tagColor: 'teal' as const,
-  },
+    link: ''
+  }
 ];
 
 export const SOCIAL_LINKS = {
