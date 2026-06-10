@@ -32,15 +32,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      className={`${philosopher.variable} ${lora.variable} ${josefinSans.variable}`}
-    >
-      <body
-        className="antialiased"
-        style={{ backgroundColor: 'var(--ivory)', color: 'var(--text-dark)' }}
-      >
-        {children}
-      </body>
+    <html className={`${philosopher.variable} ${lora.variable} ${josefinSans.variable}`}>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }

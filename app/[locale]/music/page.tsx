@@ -1,120 +1,97 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import MusicSection from '@/components/MusicSection';
+import { STATS } from '@/lib/data';
 
-export const metadata: Metadata = {
-  title: 'Music — Kirtan Rasa Music',
-  description: 'Explore the full discography of Kirtan Rasa — five albums of sacred devotional music.',
-};
+const STAT_TARGETS = [7500, 5, 350000, 718];
+const STAT_KEYS = ['stat1Label', 'stat2Label', 'stat3Label', 'stat4Label'] as const;
+
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: 'music' });
+  return { title: `${t('pageTitle')} — Kirtan Rasa Music` };
+}
 
 export default async function MusicPage({
   params: { locale },
 }: {
   params: { locale: string };
 }) {
-  const t = await getTranslations({ locale, namespace: 'music' });
-
-  const albumCircles = [
-    { src: '/images/albums/divine_nectar.png', alt: 'Divine Nectar' },
-    { src: '/images/albums/songs_of_devotion.jpg', alt: 'Songs of Devotion' },
-    { src: '/images/albums/govinda.png', alt: 'Govinda' },
-  ];
+  const tMusic = await getTranslations({ locale, namespace: 'music' });
+  const tAbout = await getTranslations({ locale, namespace: 'about' });
 
   return (
     <>
-      {/* Hero banner */}
+      {/* Stats bar */}
       <div
-        className="relative overflow-hidden"
+        className="flex justify-center flex-wrap gap-8 md:gap-12 px-6 py-8 md:px-[72px]"
         style={{
-          minHeight: 300,
-          background: 'linear-gradient(135deg, #2A3A35 0%, #1a2820 60%, #0D2020 100%)',
+          marginTop: 80,
+          backgroundColor: 'var(--warm)',
+          borderBottom: '1px solid rgba(13,110,110,0.06)',
         }}
       >
-        {/* Background radial */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              'radial-gradient(ellipse 60% 80% at 20% 50%, rgba(13,110,110,0.2), transparent)',
-          }}
-        />
-
-        {/* Content */}
-        <div className="relative z-10 px-6 md:px-20 flex flex-col justify-center h-full pt-32">
-          {/* Teal pill */}
-          <div
-            className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full"
-            style={{
-              backgroundColor: 'rgba(168,212,212,0.15)',
-              border: '1px solid rgba(168,212,212,0.3)',
-              width: 'fit-content',
-            }}
-          >
-            <span
-              style={{
-                width: 6,
-                height: 6,
-                borderRadius: '50%',
-                backgroundColor: 'var(--teal-light)',
-                display: 'inline-block',
-                flexShrink: 0,
-              }}
-            />
-            <span
-              className="font-josefin font-light uppercase"
-              style={{ fontSize: 10, letterSpacing: '0.4em', color: 'var(--teal-light)' }}
-            >
-              {t('discographyLabel')}
-            </span>
-          </div>
-
-          {/* H1 */}
-          <h1
-            className="font-philosopher font-bold mb-3"
-            style={{ fontSize: 56, color: 'white' }}
-          >
-            {t('pageTitle')}
-          </h1>
-
-          {/* Subtitle */}
-          <p
-            className="font-lora italic"
-            style={{ fontSize: 'clamp(14px, 2vw, 18px)', color: 'rgba(255,255,255,0.6)' }}
-          >
-            {t('pageSubtitle')}
-          </p>
-        </div>
-
-        {/* Overlapping album art circles */}
-        <div
-          className="hidden md:flex absolute items-center"
-          style={{ right: 80, top: '50%', transform: 'translateY(-50%)' }}
-        >
-          {albumCircles.map((album, i) => (
+        {STATS.map((stat, i) => (
+          <div key={stat.label} className="text-center">
             <div
-              key={album.src}
-              className="relative overflow-hidden flex-shrink-0"
+              data-target={STAT_TARGETS[i]}
               style={{
-                width: 110,
-                height: 110,
-                borderRadius: '50%',
-                opacity: 0.7,
-                border: '2px solid rgba(255,255,255,0.15)',
-                marginLeft: i > 0 ? -24 : 0,
-                zIndex: i,
+                fontFamily: 'var(--font-philosopher)',
+                fontSize: 36,
+                color: 'var(--teal)',
+                lineHeight: 1,
               }}
             >
-              <Image
-                src={album.src}
-                alt={album.alt}
-                fill
-                className="object-cover"
-                sizes="120px"
-              />
+              {stat.num}
             </div>
-          ))}
-        </div>
+            <div
+              style={{
+                fontFamily: 'var(--font-josefin)',
+                fontSize: 9,
+                letterSpacing: '0.3em',
+                textTransform: 'uppercase',
+                color: 'var(--dim)',
+                marginTop: 6,
+              }}
+            >
+              {tAbout(STAT_KEYS[i])}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Section header */}
+      <div
+        className="px-6 pt-14 pb-0 md:px-[72px]"
+        style={{ backgroundColor: 'var(--ivory)' }}
+      >
+        <p
+          style={{
+            fontFamily: 'var(--font-josefin)',
+            fontSize: 9,
+            letterSpacing: '0.5em',
+            textTransform: 'uppercase',
+            color: 'var(--saffron)',
+            marginBottom: 12,
+          }}
+        >
+          {tMusic('discographyLabel')}
+        </p>
+        <h1
+          style={{
+            fontFamily: 'var(--font-philosopher)',
+            fontSize: 'clamp(28px, 4vw, 48px)',
+            color: 'var(--dark)',
+            lineHeight: 1.1,
+            marginBottom: 16,
+          }}
+        >
+          {tMusic('pageTitle')}
+        </h1>
+        <div style={{ width: 40, height: 1, backgroundColor: 'var(--teal-light)' }} />
       </div>
 
       <MusicSection />

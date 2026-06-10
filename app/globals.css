@@ -4,64 +4,49 @@
 
 :root {
   --ivory: #FBF7F0;
-  --warm-white: #F0E8D8;
-  --teal-deep: #0D6E6E;
+  --warm: #F0E8D8;
+  --teal: #0D6E6E;
   --teal-mid: #5BA8A8;
   --teal-light: #A8D4D4;
   --saffron: #C4813A;
   --forest: #2A3A35;
-  --text-dark: #1a3a3a;
-  --text-mid: #5B7A7A;
-  --text-dim: #8AA8A8;
+  --dark: #1a3a3a;
+  --mid: #5B7A7A;
+  --dim: #8AA8A8;
 }
 
 html { scroll-behavior: smooth; }
-body { background: var(--ivory); color: var(--text-dark); }
+body { background: var(--ivory); color: var(--dark); overflow-x: hidden; }
 
 .font-philosopher { font-family: var(--font-philosopher); }
 .font-lora { font-family: var(--font-lora); }
 .font-josefin { font-family: var(--font-josefin); }
 
-.card-hover {
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scanline {
+  0% { left: -100%; }
+  50%, 100% { left: 100%; }
+}
+
+.stat-box {
   transition: all 0.3s ease;
 }
-.card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 40px rgba(13, 110, 110, 0.15) !important;
-  border-color: rgba(13, 110, 110, 0.3) !important;
-}
-
-.platform-card {
-  transition: all 0.3s ease;
-}
-.platform-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 40px rgba(13, 110, 110, 0.12) !important;
-  border-color: var(--teal-mid) !important;
-}
-
-.event-row {
-  transition: all 0.2s ease;
-  cursor: pointer;
-}
-.event-row:hover {
-  background-color: rgba(168, 212, 212, 0.08) !important;
-  border-color: rgba(168, 212, 212, 0.25) !important;
-}
-
-.track-row {
-  transition: background-color 0.15s ease;
-  display: flex;
-  align-items: center;
-}
-.track-row:hover {
-  background-color: rgba(13, 110, 110, 0.04) !important;
-}
-
-@keyframes nowPlayingPulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.6; transform: scale(0.85); }
-}
-.now-playing-dot {
-  animation: nowPlayingPulse 2s infinite;
+.stat-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(13,110,110,0.1);
+  border-color: rgba(13,110,110,0.2) !important;
 }

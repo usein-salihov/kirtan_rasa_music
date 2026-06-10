@@ -4,147 +4,235 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
-import { ALBUMS } from '@/lib/data';
+import { ALBUMS, SOCIAL_LINKS } from '@/lib/data';
 
 export default function FeaturedMusicSection() {
   const t = useTranslations('music');
   const pathname = usePathname();
   const locale = pathname.split('/')[1] || 'en';
-  const featuredAlbums = [ALBUMS[0], ALBUMS[4], ALBUMS[1]];
+
+  const miniAlbums = [ALBUMS[0], ALBUMS[4], ALBUMS[1]];
 
   return (
-    <section className="px-6 py-16 md:px-20 md:py-20" style={{ backgroundColor: 'var(--ivory)' }}>
+    <section
+      className="reveal px-6 py-14 md:px-20 md:py-20"
+      style={{
+        backgroundColor: 'var(--warm)',
+        borderBottom: '1px solid rgba(13,110,110,0.06)',
+      }}
+    >
       <div className="mx-auto" style={{ maxWidth: 1000 }}>
-        {/* Featured pill tag */}
-        <div
-          className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full"
-          style={{
-            backgroundColor: 'rgba(13,110,110,0.08)',
-            border: '1px solid rgba(13,110,110,0.2)',
-          }}
-        >
-          <span
+        {/* Section header */}
+        <div style={{ marginBottom: 40 }}>
+          <p
             style={{
-              width: 6,
-              height: 6,
-              borderRadius: '50%',
-              backgroundColor: 'var(--teal-deep)',
-              display: 'inline-block',
-              flexShrink: 0,
+              fontFamily: 'var(--font-josefin)',
+              fontSize: 9,
+              letterSpacing: '0.5em',
+              textTransform: 'uppercase',
+              color: 'var(--saffron)',
+              marginBottom: 12,
             }}
-          />
-          <span
-            className="font-josefin uppercase"
-            style={{ fontSize: 10, letterSpacing: '0.4em', color: 'var(--teal-deep)' }}
           >
             {t('featuredLabel')}
-          </span>
-        </div>
-
-        <h2
-          className="font-philosopher font-bold mb-4"
-          style={{ fontSize: 'clamp(28px, 4vw, 44px)', color: 'var(--text-dark)' }}
-        >
-          {t('featuredTitle')}
-        </h2>
-        <div style={{ width: 48, height: 2, backgroundColor: 'var(--teal-light)', marginBottom: 32 }} />
-
-        {/* Discography saffron pill */}
-        <div
-          className="inline-flex items-center gap-2 mb-5 px-4 py-1.5 rounded-full"
-          style={{
-            backgroundColor: 'rgba(196,129,58,0.1)',
-            border: '1px solid rgba(196,129,58,0.3)',
-          }}
-        >
-          <span
+          </p>
+          <h2
             style={{
-              width: 6,
-              height: 6,
-              borderRadius: '50%',
-              backgroundColor: 'var(--saffron)',
-              display: 'inline-block',
-              flexShrink: 0,
+              fontFamily: 'var(--font-philosopher)',
+              fontSize: 'clamp(28px, 4vw, 44px)',
+              color: 'var(--dark)',
+              lineHeight: 1.1,
+              marginBottom: 16,
             }}
-          />
-          <span
-            className="font-josefin uppercase"
-            style={{ fontSize: 10, letterSpacing: '0.4em', color: 'var(--saffron)' }}
           >
-            {t('discographyLabel')}
-          </span>
+            {t('featuredTitle')}
+          </h2>
+          <div style={{ width: 40, height: 1, backgroundColor: 'var(--teal-light)' }} />
         </div>
 
-        {/* Albums preview grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
-          {featuredAlbums.map((album) => (
-            <a
-              key={album.id}
-              href={album.spotifyUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block rounded-lg overflow-hidden transition-all duration-200"
+        {/* Two-column grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 mt-10">
+          {/* Left — featured track */}
+          <div>
+            <div
+              className="flex items-center gap-5 transition-all duration-200"
               style={{
                 backgroundColor: 'white',
                 border: '1px solid rgba(13,110,110,0.08)',
-                borderTop: '3px solid transparent',
+                borderRadius: 8,
+                padding: 24,
+                marginBottom: 24,
+                cursor: 'pointer',
               }}
               onMouseEnter={(e) => {
                 const el = e.currentTarget as HTMLElement;
-                el.style.borderTop = '3px solid var(--teal-deep)';
-                el.style.borderRight = '1px solid rgba(13,110,110,0.2)';
-                el.style.borderBottom = '1px solid rgba(13,110,110,0.2)';
-                el.style.borderLeft = '1px solid rgba(13,110,110,0.2)';
-                el.style.transform = 'translateY(-4px)';
                 el.style.boxShadow = '0 8px 32px rgba(13,110,110,0.12)';
+                el.style.borderColor = 'rgba(13,110,110,0.2)';
               }}
               onMouseLeave={(e) => {
                 const el = e.currentTarget as HTMLElement;
-                el.style.borderTop = '3px solid transparent';
-                el.style.borderRight = '1px solid rgba(13,110,110,0.08)';
-                el.style.borderBottom = '1px solid rgba(13,110,110,0.08)';
-                el.style.borderLeft = '1px solid rgba(13,110,110,0.08)';
-                el.style.transform = 'translateY(0)';
                 el.style.boxShadow = 'none';
+                el.style.borderColor = 'rgba(13,110,110,0.08)';
               }}
             >
-              <div className="relative w-full" style={{ paddingTop: '100%' }}>
+              {/* Album art */}
+              <div
+                className="relative rounded-md overflow-hidden flex-shrink-0"
+                style={{ width: 64, height: 64 }}
+              >
                 <Image
-                  src={album.image}
-                  alt={album.title}
+                  src="/images/albums/govinda.png"
+                  alt="Govinda"
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
+                  sizes="64px"
                 />
               </div>
-              <div className="p-4">
-                <div className="font-lora" style={{ fontSize: 15, color: 'var(--text-dark)' }}>
-                  {album.title}
+
+              {/* Track info */}
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div
+                  style={{
+                    fontFamily: 'var(--font-philosopher)',
+                    fontSize: 20,
+                    color: 'var(--dark)',
+                  }}
+                >
+                  Govinda
                 </div>
-                <div className="font-josefin mt-1" style={{ fontSize: 10, color: 'var(--text-dim)' }}>
-                  {album.year}
+                <div
+                  style={{
+                    fontFamily: 'var(--font-josefin)',
+                    fontSize: 11,
+                    color: 'var(--dim)',
+                    letterSpacing: '0.08em',
+                    marginTop: 4,
+                  }}
+                >
+                  Govinda · Kirtan Rasa
                 </div>
               </div>
-            </a>
-          ))}
-        </div>
 
-        {/* View All button */}
-        <div className="mt-7">
-          <Link
-            href={`/${locale}/music`}
-            className="font-josefin font-light uppercase inline-block transition-all duration-200 hover:opacity-85"
-            style={{
-              backgroundColor: 'var(--teal-deep)',
-              color: 'white',
-              padding: '14px 36px',
-              borderRadius: 2,
-              fontSize: 11,
-              letterSpacing: '0.28em',
-            }}
-          >
-            {t('viewAll')}
-          </Link>
+              {/* Play button */}
+              <button
+                onClick={() => window.open(SOCIAL_LINKS.spotify, '_blank')}
+                className="flex items-center justify-center flex-shrink-0 transition-all duration-200"
+                style={{
+                  width: 44,
+                  height: 44,
+                  borderRadius: '50%',
+                  backgroundColor: '#1DB954',
+                  border: 'none',
+                  cursor: 'pointer',
+                }}
+                onMouseEnter={(e) => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.transform = 'scale(1.08)';
+                  el.style.boxShadow = '0 4px 16px rgba(29,185,84,0.4)';
+                }}
+                onMouseLeave={(e) => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.transform = 'scale(1)';
+                  el.style.boxShadow = 'none';
+                }}
+                aria-label="Play on Spotify"
+              >
+                <svg width="14" height="16" viewBox="0 0 14 16" fill="white">
+                  <path d="M2 1L13 8L2 15V1Z" />
+                </svg>
+              </button>
+            </div>
+
+            {/* View all link */}
+            <Link
+              href={`/${locale}/music`}
+              className="inline-flex items-center gap-2 group transition-all duration-200"
+              style={{
+                fontFamily: 'var(--font-josefin)',
+                fontSize: 11,
+                letterSpacing: '0.25em',
+                textTransform: 'uppercase',
+                color: 'var(--teal)',
+                textDecoration: 'none',
+              }}
+            >
+              <span>{t('viewAll')}</span>
+              <span className="group-hover:translate-x-1 transition-transform duration-200">→</span>
+            </Link>
+          </div>
+
+          {/* Right — latest albums */}
+          <div>
+            <p
+              style={{
+                fontFamily: 'var(--font-josefin)',
+                fontSize: 9,
+                letterSpacing: '0.5em',
+                textTransform: 'uppercase',
+                color: 'var(--saffron)',
+                marginBottom: 16,
+              }}
+            >
+              {t('discographyLabel')}
+            </p>
+            <div className="grid grid-cols-3 gap-3">
+              {miniAlbums.map((album) => (
+                <div
+                  key={album.id}
+                  className="rounded-md overflow-hidden cursor-pointer transition-all duration-200"
+                  style={{
+                    backgroundColor: 'white',
+                    border: '1px solid rgba(13,110,110,0.07)',
+                  }}
+                  onClick={() => window.open(album.spotifyUrl, '_blank')}
+                  onMouseEnter={(e) => {
+                    const el = e.currentTarget as HTMLElement;
+                    el.style.border = '1px solid rgba(13,110,110,0.25)';
+                    el.style.transform = 'translateY(-3px)';
+                    el.style.boxShadow = '0 4px 16px rgba(13,110,110,0.12)';
+                  }}
+                  onMouseLeave={(e) => {
+                    const el = e.currentTarget as HTMLElement;
+                    el.style.border = '1px solid rgba(13,110,110,0.07)';
+                    el.style.transform = 'translateY(0)';
+                    el.style.boxShadow = 'none';
+                  }}
+                >
+                  <div className="relative w-full" style={{ paddingTop: '100%' }}>
+                    <Image
+                      src={album.image}
+                      alt={album.title}
+                      fill
+                      className="object-cover"
+                      sizes="200px"
+                    />
+                  </div>
+                  <div style={{ padding: 12 }}>
+                    <div
+                      style={{
+                        fontFamily: 'var(--font-lora)',
+                        fontSize: 13,
+                        color: 'var(--dark)',
+                      }}
+                    >
+                      {album.title}
+                    </div>
+                    <div
+                      style={{
+                        fontFamily: 'var(--font-josefin)',
+                        fontSize: 10,
+                        color: 'var(--dim)',
+                        letterSpacing: '0.08em',
+                        marginTop: 2,
+                      }}
+                    >
+                      {album.year}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

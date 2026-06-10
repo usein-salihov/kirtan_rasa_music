@@ -12,83 +12,125 @@ export default function EventsPreviewSection() {
   const isBg = locale === 'bg';
 
   return (
-    <section className="px-6 py-16 md:px-20 md:py-20" style={{ backgroundColor: 'var(--forest)' }}>
+    <section
+      className="reveal px-6 py-14 md:px-20 md:py-20"
+      style={{ backgroundColor: 'var(--forest)' }}
+    >
       <div className="mx-auto" style={{ maxWidth: 1000 }}>
-        {/* Teal-light pill tag */}
-        <div
-          className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full"
+        {/* Header */}
+        <p
           style={{
-            backgroundColor: 'rgba(168,212,212,0.1)',
-            border: '1px solid rgba(168,212,212,0.2)',
+            fontFamily: 'var(--font-josefin)',
+            fontSize: 9,
+            letterSpacing: '0.5em',
+            textTransform: 'uppercase',
+            color: 'var(--teal-light)',
+            marginBottom: 12,
           }}
         >
-          <span
-            style={{
-              width: 6,
-              height: 6,
-              borderRadius: '50%',
-              backgroundColor: 'var(--teal-light)',
-              display: 'inline-block',
-              flexShrink: 0,
-            }}
-          />
-          <span
-            className="font-josefin uppercase"
-            style={{ fontSize: 10, letterSpacing: '0.4em', color: 'var(--teal-light)' }}
-          >
-            {t('label')}
-          </span>
-        </div>
-
+          {t('label')}
+        </p>
         <h2
-          className="font-philosopher font-bold mb-4"
-          style={{ fontSize: 'clamp(28px, 4vw, 44px)', color: 'white' }}
+          style={{
+            fontFamily: 'var(--font-philosopher)',
+            fontSize: 36,
+            color: 'white',
+            marginBottom: 12,
+          }}
         >
           {t('previewTitle')}
         </h2>
-        <div style={{ width: 48, height: 2, backgroundColor: 'var(--teal-light)', marginBottom: 32 }} />
+        <div
+          style={{
+            width: 40,
+            height: 1,
+            backgroundColor: 'rgba(168,212,212,0.3)',
+            marginBottom: 8,
+          }}
+        />
 
-        {/* Events list */}
-        <div className="flex flex-col gap-4 mt-2">
+        {/* Event rows */}
+        <div className="flex flex-col mt-2" style={{ gap: 2 }}>
           {EVENTS.map((event) => (
             <div
               key={event.id}
-              className="event-row flex items-center gap-7 rounded-lg px-4 py-4 md:px-7 md:py-5"
+              className="flex items-center gap-8 rounded-sm cursor-pointer transition-all duration-200"
               style={{
-                backgroundColor: 'rgba(255,255,255,0.06)',
-                border: '1px solid rgba(168,212,212,0.12)',
+                padding: '20px 28px',
+                backgroundColor: 'rgba(255,255,255,0.03)',
+                borderLeft: '2px solid transparent',
+              }}
+              onMouseEnter={(e) => {
+                const el = e.currentTarget as HTMLElement;
+                el.style.backgroundColor = 'rgba(168,212,212,0.06)';
+                el.style.borderLeftColor = 'var(--teal-light)';
+                el.style.paddingLeft = '36px';
+                const arrow = el.querySelector('[data-arrow]') as HTMLElement;
+                if (arrow) {
+                  arrow.style.color = 'var(--teal-light)';
+                  arrow.style.transform = 'translateX(4px)';
+                }
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget as HTMLElement;
+                el.style.backgroundColor = 'rgba(255,255,255,0.03)';
+                el.style.borderLeftColor = 'transparent';
+                el.style.paddingLeft = '28px';
+                const arrow = el.querySelector('[data-arrow]') as HTMLElement;
+                if (arrow) {
+                  arrow.style.color = 'rgba(168,212,212,0.25)';
+                  arrow.style.transform = 'translateX(0)';
+                }
               }}
             >
               {/* Date */}
-              <div className="text-center" style={{ minWidth: 44 }}>
+              <div className="text-center" style={{ minWidth: 52 }}>
                 <div
-                  className="font-philosopher"
-                  style={{ fontSize: 'clamp(24px, 6vw, 32px)', color: 'var(--teal-light)', lineHeight: 1 }}
+                  style={{
+                    fontFamily: 'var(--font-philosopher)',
+                    fontSize: 28,
+                    color: 'var(--teal-light)',
+                    lineHeight: 1,
+                  }}
                 >
                   {event.day}
                 </div>
                 <div
-                  className="font-josefin uppercase mt-0.5"
-                  style={{ fontSize: 10, letterSpacing: '0.3em', color: 'rgba(168,212,212,0.6)' }}
+                  style={{
+                    fontFamily: 'var(--font-josefin)',
+                    fontSize: 9,
+                    letterSpacing: '0.3em',
+                    textTransform: 'uppercase',
+                    color: 'rgba(168,212,212,0.5)',
+                    marginTop: 2,
+                  }}
                 >
                   {isBg ? event.monthBg : event.month}
                 </div>
               </div>
 
-              {/* Vertical divider */}
-              <div className="hidden md:block" style={{ width: 1, height: 48, backgroundColor: 'rgba(168,212,212,0.15)' }} />
+              {/* Separator */}
+              <div style={{ width: 1, height: 40, backgroundColor: 'rgba(168,212,212,0.1)', flexShrink: 0 }} />
 
               {/* Info */}
-              <div className="flex-1">
+              <div style={{ flex: 1, minWidth: 0 }}>
                 <div
-                  className="font-lora mb-1"
-                  style={{ fontSize: 'clamp(15px, 4vw, 18px)', color: 'white' }}
+                  style={{
+                    fontFamily: 'var(--font-philosopher)',
+                    fontSize: 18,
+                    color: 'white',
+                    marginBottom: 2,
+                  }}
                 >
                   {isBg ? event.nameBg : event.name}
                 </div>
                 <div
-                  className="font-josefin"
-                  style={{ fontSize: 12, color: 'rgba(168,212,212,0.7)', letterSpacing: '0.05em' }}
+                  style={{
+                    fontFamily: 'var(--font-josefin)',
+                    fontSize: 11,
+                    color: 'rgba(168,212,212,0.6)',
+                    letterSpacing: '0.04em',
+                  }}
                 >
                   {isBg ? event.locationBg : event.location}
                 </div>
@@ -96,45 +138,67 @@ export default function EventsPreviewSection() {
 
               {/* Tag */}
               <div
-                className="font-josefin uppercase flex-shrink-0"
                 style={{
-                  fontSize: 10,
+                  fontFamily: 'var(--font-josefin)',
+                  fontSize: 9,
                   letterSpacing: '0.2em',
+                  textTransform: 'uppercase',
                   color: 'var(--teal-light)',
-                  padding: '4px 12px',
-                  border: '1px solid rgba(168,212,212,0.3)',
+                  border: '1px solid rgba(168,212,212,0.2)',
                   borderRadius: 999,
+                  padding: '4px 14px',
+                  flexShrink: 0,
                 }}
               >
                 {t(event.tag)}
               </div>
 
-              {/* Right arrow */}
-              <div
-                className="font-josefin flex-shrink-0"
-                style={{ fontSize: 14, color: 'var(--teal-light)', opacity: 0.5 }}
+              {/* Arrow */}
+              <span
+                data-arrow="true"
+                style={{
+                  fontSize: 14,
+                  color: 'rgba(168,212,212,0.25)',
+                  marginLeft: 4,
+                  flexShrink: 0,
+                  transition: 'color 0.2s, transform 0.2s',
+                }}
               >
                 →
-              </div>
+              </span>
             </div>
           ))}
         </div>
 
-        {/* All Events link */}
-        <div className="mt-8">
+        {/* All events button */}
+        <div style={{ marginTop: 32 }}>
           <Link
             href={`/${locale}/events`}
-            className="font-josefin font-light uppercase inline-block transition-all duration-200 hover:opacity-80"
+            className="inline-block transition-all duration-200"
             style={{
-              color: 'var(--teal-light)',
-              border: '1px solid rgba(168,212,212,0.4)',
-              padding: '14px 36px',
-              borderRadius: 2,
+              fontFamily: 'var(--font-josefin)',
               fontSize: 11,
-              letterSpacing: '0.28em',
+              letterSpacing: '0.25em',
+              textTransform: 'uppercase',
+              color: 'var(--teal-light)',
+              backgroundColor: 'transparent',
+              border: '1px solid rgba(168,212,212,0.25)',
+              borderRadius: 2,
+              padding: '14px 32px',
+              textDecoration: 'none',
+            }}
+            onMouseEnter={(e) => {
+              const el = e.currentTarget as HTMLElement;
+              el.style.backgroundColor = 'rgba(168,212,212,0.08)';
+              el.style.borderColor = 'rgba(168,212,212,0.4)';
+            }}
+            onMouseLeave={(e) => {
+              const el = e.currentTarget as HTMLElement;
+              el.style.backgroundColor = 'transparent';
+              el.style.borderColor = 'rgba(168,212,212,0.25)';
             }}
           >
-            {t('allEvents')}
+            {t('allEvents')} →
           </Link>
         </div>
       </div>

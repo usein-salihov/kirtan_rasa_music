@@ -9,23 +9,31 @@ export default function Footer() {
 
   return (
     <footer
-      className="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left"
+      className="flex flex-col md:flex-row items-center justify-between gap-4 px-6 py-8 md:px-[72px]"
       style={{
         backgroundColor: 'var(--forest)',
-        borderTop: '3px solid var(--teal-deep)',
-        padding: '40px 80px',
+        borderTop: '2px solid var(--teal)',
       }}
     >
       <div
-        className="font-philosopher"
-        style={{ fontSize: 16, color: 'rgba(248,244,236,0.85)' }}
+        style={{
+          fontFamily: 'var(--font-philosopher)',
+          fontSize: 15,
+          color: 'rgba(248,244,236,0.8)',
+          whiteSpace: 'nowrap',
+        }}
       >
-        <span style={{ whiteSpace: 'nowrap' }}>Kirtan Rasa Music</span>
+        Kirtan Rasa Music
       </div>
 
       <div
-        className="font-josefin uppercase"
-        style={{ fontSize: 10, letterSpacing: '0.15em', color: 'rgba(248,244,236,0.4)' }}
+        style={{
+          fontFamily: 'var(--font-josefin)',
+          fontSize: 10,
+          letterSpacing: '0.15em',
+          textTransform: 'uppercase',
+          color: 'rgba(248,244,236,0.35)',
+        }}
       >
         {t('copyright')}
       </div>
@@ -37,8 +45,17 @@ export default function Footer() {
             href={SOCIAL_LINKS[p]}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-josefin uppercase transition-colors duration-200 hover:text-white"
-            style={{ fontSize: 11, letterSpacing: '0.15em', color: 'rgba(248,244,236,0.5)' }}
+            style={{
+              fontFamily: 'var(--font-josefin)',
+              fontSize: 10,
+              letterSpacing: '0.15em',
+              textTransform: 'uppercase',
+              color: 'rgba(248,244,236,0.45)',
+              textDecoration: 'none',
+              transition: 'color 0.2s',
+            }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = 'var(--teal-light)'; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = 'rgba(248,244,236,0.45)'; }}
           >
             {t(p)}
           </Link>
