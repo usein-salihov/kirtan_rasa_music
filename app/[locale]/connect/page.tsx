@@ -12,10 +12,6 @@ export async function generateMetadata({
   return { title: `${t('pageTitle')} — Kirtan Rasa Music` };
 }
 
-export default async function ConnectPage({
-  params: { locale: _locale },
-}: {
-  params: { locale: string };
-}) {
+export default async function ConnectPage() {
   return <ConnectSection />;
 }

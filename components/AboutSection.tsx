@@ -1,8 +1,4 @@
 import { getTranslations } from 'next-intl/server';
-import { STATS } from '@/lib/data';
-
-const STAT_KEYS = ['stat1Label', 'stat2Label', 'stat3Label', 'stat4Label'] as const;
-const STAT_TARGETS = [7500, 5, 350000, 718];
 
 export default async function AboutSection() {
   const t = await getTranslations('about');
