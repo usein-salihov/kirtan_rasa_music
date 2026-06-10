@@ -21,7 +21,7 @@ export default function FeaturedMusicSection() {
         borderBottom: '1px solid rgba(13,110,110,0.06)',
       }}
     >
-      <div className="mx-auto" style={{ maxWidth: 1000 }}>
+      <div className="max-w-3xl mx-auto">
         {/* Section header */}
         <p
           style={{
@@ -50,13 +50,12 @@ export default function FeaturedMusicSection() {
 
         {/* Featured track card */}
         <div
-          className="flex items-center gap-5 transition-all duration-200"
+          className="w-full flex items-center gap-5 transition-all duration-200"
           style={{
             backgroundColor: 'white',
             border: '1px solid rgba(13,110,110,0.08)',
             borderRadius: 8,
             padding: 24,
-            maxWidth: 576,
             cursor: 'pointer',
           }}
           onMouseEnter={(e) => {
@@ -154,7 +153,7 @@ export default function FeaturedMusicSection() {
         </p>
 
         {/* 3-column album grid */}
-        <div className="grid grid-cols-3 gap-4" style={{ maxWidth: 576 }}>
+        <div className="grid grid-cols-3 gap-5 mt-4">
           {miniAlbums.map((album) => (
             <div
               key={album.id}
