@@ -23,7 +23,7 @@ export default async function EventsPage({
     <div style={{ backgroundColor: 'var(--ivory)', minHeight: '100vh' }}>
       {/* Page header */}
       <div
-        className="px-6 pt-28 pb-12 md:px-[72px]"
+        className="px-6 pt-32 pb-12 md:px-[72px]"
         style={{ borderBottom: '1px solid rgba(13,110,110,0.06)' }}
       >
         <p

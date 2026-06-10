@@ -19,11 +19,10 @@ export default async function MusicPage({
   const tMusic = await getTranslations({ locale, namespace: 'music' });
 
   return (
-    <>
+    <div style={{ backgroundColor: 'var(--ivory)', minHeight: 'calc(100vh - 80px)' }}>
       {/* Section header */}
       <div
-        className="px-6 pt-14 pb-0 md:px-[72px]"
-        style={{ backgroundColor: 'var(--ivory)' }}
+        className="px-6 pt-32 pb-0 md:px-[72px]"
       >
         <p
           style={{
@@ -52,6 +51,6 @@ export default async function MusicPage({
       </div>
 
       <MusicSection />
-    </>
+    </div>
   );
 }

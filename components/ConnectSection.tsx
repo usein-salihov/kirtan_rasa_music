@@ -43,7 +43,7 @@ export default function ConnectSection() {
 
   return (
     <div
-      className="px-6 py-14 md:px-20 md:py-20"
+      className="px-6 pt-32 pb-14 md:px-20 md:pb-20"
       style={{ backgroundColor: 'var(--ivory)' }}
     >
       {/* Section header */}
