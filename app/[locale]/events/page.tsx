@@ -61,8 +61,9 @@ export default async function EventsPage({
         </p>
       </div>
 
-      {/* Events list */}
-      <div className="px-6 py-12 md:px-[72px] max-w-3xl">
+      {/* Events list + past events */}
+      <div className="max-w-3xl mx-auto px-6 md:px-0">
+      <div className="py-12">
         <div className="flex flex-col" style={{ gap: 2 }}>
           {EVENTS.map((event) => (
             <div
@@ -166,7 +167,7 @@ export default async function EventsPage({
       </div>
 
       {/* Past events */}
-      <div className="px-6 mt-8 md:px-[72px]" style={{ maxWidth: 720 + 144, paddingBottom: 80 }}>
+      <div style={{ paddingBottom: 80 }}>
         <h2
           style={{
             fontFamily: 'var(--font-philosopher)',
@@ -209,6 +210,7 @@ export default async function EventsPage({
             Check back soon
           </p>
         </div>
+      </div>
       </div>
     </div>
   );
