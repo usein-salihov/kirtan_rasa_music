@@ -15,11 +15,11 @@ export default function FeaturedMusicSection() {
 
   return (
     <section
-      className="reveal px-6 md:px-20 py-16"
+      className="reveal px-6 md:px-20 py-16 flex flex-col items-center"
       style={{ backgroundColor: 'var(--warm)' }}
     >
       {/* Section header */}
-      <div style={{ marginBottom: 40 }}>
+      <div className="text-center w-full max-w-2xl" style={{ marginBottom: 40 }}>
         <p
           className="font-josefin"
           style={{
@@ -47,7 +47,7 @@ export default function FeaturedMusicSection() {
       </div>
 
       {/* Albums grid */}
-      <div className="grid grid-cols-3 gap-5 mt-10 max-w-2xl">
+      <div className="grid grid-cols-3 gap-5 mt-10 max-w-2xl mx-auto">
         {featuredAlbums.map((album) => (
           <div
             key={album.id}
@@ -98,6 +98,7 @@ export default function FeaturedMusicSection() {
       </div>
 
       {/* View link */}
+      <div className="flex justify-center mt-8">
       <Link
         href={`/${locale}/music`}
         className="inline-flex items-center gap-2 group font-josefin font-light transition-all duration-200"
@@ -107,13 +108,13 @@ export default function FeaturedMusicSection() {
           textTransform: 'uppercase',
           color: 'var(--teal)',
           textDecoration: 'none',
-          marginTop: 32,
           display: 'inline-flex',
         }}
       >
         <span>{t('viewAll')}</span>
         <span className="group-hover:translate-x-1 transition-transform duration-200">→</span>
       </Link>
+      </div>
     </section>
   );
 }
