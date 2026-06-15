@@ -2,13 +2,18 @@ import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import MusicSection from '@/components/MusicSection';
 
-export async function generateMetadata({
-  params: { locale },
-}: {
-  params: { locale: string };
-}): Promise<Metadata> {
-  const t = await getTranslations({ locale, namespace: 'music' });
-  return { title: `${t('pageTitle')} — Kirtan Rasa Music` };
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+  const isEn = params.locale === 'en';
+  return {
+    title: isEn ? 'Music & Discography' : 'Музика и Дискография',
+    description: isEn
+      ? 'Explore Kirtan Rasa Music discography — Govinda, Songs of Devotion, Divine Nectar, Golden Tears. Stream all albums on Spotify.'
+      : 'Разгледай дискографията на Кirtан Раса — Говинда, Songs of Devotion, Divine Nectar, Golden Tears. Слушай всички албуми в Spotify.',
+    alternates: {
+      canonical: `/${params.locale}/music`,
+      languages: { 'en': '/en/music', 'bg': '/bg/music' },
+    },
+  };
 }
 
 export default async function MusicPage({

@@ -2,13 +2,18 @@ import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { EVENTS } from '@/lib/data';
 
-export async function generateMetadata({
-  params: { locale },
-}: {
-  params: { locale: string };
-}): Promise<Metadata> {
-  const t = await getTranslations({ locale, namespace: 'events' });
-  return { title: `${t('pageTitle')} — Kirtan Rasa Music` };
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+  const isEn = params.locale === 'en';
+  return {
+    title: isEn ? 'Live Events & Concerts' : 'Събития и Концерти',
+    description: isEn
+      ? 'Join Kirtan Rasa for live kirtan sessions, festivals, and sacred sound journeys across Bulgaria — Sofia, Plovdiv, Varna.'
+      : 'Присъедини се към Кirtан Раса за живи киртан сесии, фестивали и пътешествия на свещения звук из България.',
+    alternates: {
+      canonical: `/${params.locale}/events`,
+      languages: { 'en': '/en/events', 'bg': '/bg/events' },
+    },
+  };
 }
 
 export default async function EventsPage({

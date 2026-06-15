@@ -73,7 +73,7 @@ export default function FeaturedMusicSection() {
             <div className="relative w-full overflow-hidden" style={{ paddingTop: '100%' }}>
               <Image
                 src={album.image}
-                alt={album.title}
+                alt={`${album.title} album cover by Kirtan Rasa`}
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 33vw, 25vw"

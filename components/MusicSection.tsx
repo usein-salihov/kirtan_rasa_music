@@ -37,7 +37,7 @@ export default function MusicSection() {
             <div className="relative w-full" style={{ paddingTop: '100%' }}>
               <Image
                 src={album.image}
-                alt={album.title}
+                alt={`${album.title} album cover by Kirtan Rasa`}
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"

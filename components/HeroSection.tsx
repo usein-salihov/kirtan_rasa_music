@@ -159,7 +159,7 @@ export default function HeroSection() {
       >
         <Image
           src="/images/hero-performance.jpg"
-          alt="Kirtan Rasa live"
+          alt="Kirtan Rasa Music performing live kirtan"
           fill
           priority
           style={{ objectFit: 'cover', objectPosition: 'center 30%' }}

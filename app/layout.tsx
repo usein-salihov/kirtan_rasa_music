@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Philosopher, Lora, Josefin_Sans } from 'next/font/google';
+import { getLocale } from 'next-intl/server';
 import './globals.css';
 
 const philosopher = Philosopher({
@@ -29,13 +30,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
   return (
-    <html className={`${philosopher.variable} ${lora.variable} ${josefinSans.variable}`}>
+    <html lang={locale} className={`${philosopher.variable} ${lora.variable} ${josefinSans.variable}`}>
       <body className="antialiased">{children}</body>
     </html>
   );
