@@ -71,56 +71,68 @@ export default async function EventsPage({
       <div className="py-12">
         <div className="flex flex-col" style={{ gap: 2 }}>
           {EVENTS.map((event) => {
+            const tagBadge = (
+              <div
+                style={{
+                  fontFamily: 'var(--font-josefin)',
+                  fontSize: 10,
+                  letterSpacing: '0.2em',
+                  textTransform: 'uppercase',
+                  color: event.tagColor === 'teal' ? 'var(--teal)' : 'var(--saffron)',
+                  border: `1px solid ${event.tagColor === 'teal' ? 'rgba(13,110,110,0.3)' : 'rgba(196,129,58,0.3)'}`,
+                  borderRadius: 999,
+                  padding: '4px 12px',
+                  flexShrink: 0,
+                }}
+              >
+                {t(event.tag)}
+              </div>
+            );
+
             const row = (
               <div
                 key={event.id}
-                className="flex items-center gap-8 rounded-sm"
+                className="rounded-sm"
                 style={{
-                  padding: '24px 32px',
+                  padding: '20px',
                   backgroundColor: 'white',
                   border: '1px solid rgba(13,110,110,0.08)',
                   borderRadius: 8,
                   marginBottom: 8,
                 }}
               >
-                {/* Date */}
-                <div className="text-center" style={{ minWidth: 52 }}>
-                  <div
-                    style={{
-                      fontFamily: 'var(--font-philosopher)',
-                      fontSize: 'clamp(24px, 5vw, 36px)',
-                      color: 'var(--teal)',
-                      lineHeight: 1,
-                    }}
-                  >
-                    {event.day}
+                {/* Mobile layout */}
+                <div className="md:hidden">
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center gap-2">
+                      <span
+                        style={{
+                          fontFamily: 'var(--font-philosopher)',
+                          fontSize: 24,
+                          color: 'var(--teal)',
+                          lineHeight: 1,
+                        }}
+                      >
+                        {event.day}
+                      </span>
+                      <span
+                        style={{
+                          fontFamily: 'var(--font-josefin)',
+                          fontSize: 9,
+                          letterSpacing: '0.3em',
+                          textTransform: 'uppercase',
+                          color: 'var(--dim)',
+                        }}
+                      >
+                        {isBg ? event.monthBg : event.month}
+                      </span>
+                    </div>
+                    {tagBadge}
                   </div>
                   <div
                     style={{
-                      fontFamily: 'var(--font-josefin)',
-                      fontSize: 10,
-                      letterSpacing: '0.3em',
-                      textTransform: 'uppercase',
-                      color: 'var(--dim)',
-                      marginTop: 4,
-                    }}
-                  >
-                    {isBg ? event.monthBg : event.month}
-                  </div>
-                </div>
-
-                {/* Divider */}
-                <div
-                  className="hidden md:block"
-                  style={{ width: 1, height: 52, backgroundColor: 'rgba(13,110,110,0.1)', flexShrink: 0 }}
-                />
-
-                {/* Info */}
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <div
-                    style={{
                       fontFamily: 'var(--font-philosopher)',
-                      fontSize: 20,
+                      fontSize: 18,
                       color: 'var(--dark)',
                       marginBottom: 4,
                     }}
@@ -130,7 +142,7 @@ export default async function EventsPage({
                   <div
                     style={{
                       fontFamily: 'var(--font-josefin)',
-                      fontSize: 12,
+                      fontSize: 11,
                       color: 'var(--dim)',
                       letterSpacing: '0.05em',
                     }}
@@ -139,34 +151,77 @@ export default async function EventsPage({
                   </div>
                 </div>
 
-                {/* Tag */}
-                <div
-                  style={{
-                    fontFamily: 'var(--font-josefin)',
-                    fontSize: 10,
-                    letterSpacing: '0.2em',
-                    textTransform: 'uppercase',
-                    color: event.tagColor === 'teal' ? 'var(--teal)' : 'var(--saffron)',
-                    border: `1px solid ${event.tagColor === 'teal' ? 'rgba(13,110,110,0.3)' : 'rgba(196,129,58,0.3)'}`,
-                    borderRadius: 999,
-                    padding: '6px 14px',
-                    flexShrink: 0,
-                  }}
-                >
-                  {t(event.tag)}
-                </div>
+                {/* Desktop layout */}
+                <div className="hidden md:flex items-center gap-8">
+                  {/* Date */}
+                  <div className="text-center" style={{ minWidth: 52 }}>
+                    <div
+                      style={{
+                        fontFamily: 'var(--font-philosopher)',
+                        fontSize: 'clamp(24px, 5vw, 36px)',
+                        color: 'var(--teal)',
+                        lineHeight: 1,
+                      }}
+                    >
+                      {event.day}
+                    </div>
+                    <div
+                      style={{
+                        fontFamily: 'var(--font-josefin)',
+                        fontSize: 10,
+                        letterSpacing: '0.3em',
+                        textTransform: 'uppercase',
+                        color: 'var(--dim)',
+                        marginTop: 4,
+                      }}
+                    >
+                      {isBg ? event.monthBg : event.month}
+                    </div>
+                  </div>
 
-                {/* Arrow */}
-                <span
-                  style={{
-                    fontSize: 14,
-                    color: 'var(--teal)',
-                    opacity: 0.4,
-                    flexShrink: 0,
-                  }}
-                >
-                  →
-                </span>
+                  {/* Divider */}
+                  <div
+                    style={{ width: 1, height: 52, backgroundColor: 'rgba(13,110,110,0.1)', flexShrink: 0 }}
+                  />
+
+                  {/* Info */}
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div
+                      style={{
+                        fontFamily: 'var(--font-philosopher)',
+                        fontSize: 20,
+                        color: 'var(--dark)',
+                        marginBottom: 4,
+                      }}
+                    >
+                      {isBg ? event.nameBg : event.name}
+                    </div>
+                    <div
+                      style={{
+                        fontFamily: 'var(--font-josefin)',
+                        fontSize: 12,
+                        color: 'var(--dim)',
+                        letterSpacing: '0.05em',
+                      }}
+                    >
+                      {isBg ? event.locationBg : event.location}
+                    </div>
+                  </div>
+
+                  {tagBadge}
+
+                  {/* Arrow */}
+                  <span
+                    style={{
+                      fontSize: 14,
+                      color: 'var(--teal)',
+                      opacity: 0.4,
+                      flexShrink: 0,
+                    }}
+                  >
+                    →
+                  </span>
+                </div>
               </div>
             );
             return event.link ? (

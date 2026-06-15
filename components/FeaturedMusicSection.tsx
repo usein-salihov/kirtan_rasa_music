@@ -43,11 +43,11 @@ export default function FeaturedMusicSection() {
         >
           {t('featuredTitle')}
         </h2>
-        <div style={{ width: 40, height: 1, backgroundColor: 'var(--teal-light)' }} />
+        <div className="mx-auto" style={{ width: 40, height: 1, backgroundColor: 'var(--teal-light)' }} />
       </div>
 
       {/* Albums grid */}
-      <div className="grid grid-cols-3 gap-5 mt-10 max-w-2xl mx-auto">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5 mt-10 max-w-4xl mx-auto">
         {featuredAlbums.map((album) => (
           <div
             key={album.id}
